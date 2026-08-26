@@ -11,15 +11,16 @@ config_version=5
 [application]
 
 config/name="ID Creator"
+run/main_scene="res://main_ui.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
-run/main_scene="res://main_ui.tscn"
 
 [display]
 
-window/size/viewport_width=1152
-window/size/viewport_height=700
-window/size/resizable=true
+window/size/viewport_width=3852
+window/size/viewport_height=1980
+window/size/mode=2
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
