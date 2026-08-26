@@ -1,0 +1,602 @@
+[gd_scene format=3 uid="uid://yu8uttc60ldq"]
+
+[ext_resource type="Script" uid="uid://c6w4pdj3el1kn" path="res://main_ui.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b0a4cvuy0dake" path="res://assets/bg-temp.jpg" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://dd5b211u0jx07" path="res://assets/font-temp.png" id="3_overlay"]
+[ext_resource type="Texture2D" uid="uid://cjdkn18hrxvmc" path="res://assets/back-temp.png" id="4_back"]
+[ext_resource type="Texture2D" uid="uid://d2ln5jy2u4eus" path="res://assets/headers/jmc-header.png" id="5_jmc"]
+
+[node name="main_UI" type="Control" unique_id=625672535]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="HSplit" type="HSplitContainer" parent="." unique_id=802214261]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offsets = PackedInt32Array(420)
+split_offset = 420
+
+[node name="LeftPanel" type="PanelContainer" parent="HSplit" unique_id=522311256]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Scroll" type="ScrollContainer" parent="HSplit/LeftPanel" unique_id=157586647]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Form" type="VBoxContainer" parent="HSplit/LeftPanel/Scroll" unique_id=1318895406]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1972370399]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "ID Creator"
+horizontal_alignment = 1
+
+[node name="Sep0" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=2023937453]
+layout_mode = 2
+
+[node name="RowCompany" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=111111111]
+layout_mode = 2
+
+[node name="LabelCompany" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowCompany" unique_id=111111112]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Company:"
+vertical_alignment = 1
+
+[node name="CompanyDropdown" type="OptionButton" parent="HSplit/LeftPanel/Scroll/Form/RowCompany" unique_id=111111113]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sep0b" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=111111119]
+layout_mode = 2
+
+[node name="RowName" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=37314997]
+layout_mode = 2
+
+[node name="LabelName" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowName" unique_id=1072790023]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Complete Name:"
+vertical_alignment = 1
+
+[node name="InputName" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowName" unique_id=1637333863]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Juan Dela Cruz"
+
+[node name="RowRole" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1715580463]
+layout_mode = 2
+
+[node name="LabelRole" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowRole" unique_id=1845307030]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Role / Position:"
+vertical_alignment = 1
+
+[node name="InputRole" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowRole" unique_id=2049607169]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Software Engineer"
+
+[node name="RowNumber" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1169200209]
+layout_mode = 2
+
+[node name="LabelNumber" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowNumber" unique_id=1706127293]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "ID Number:"
+vertical_alignment = 1
+
+[node name="InputNumber" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowNumber" unique_id=1831460699]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "2024-0001"
+
+[node name="RowDept" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1562361942]
+layout_mode = 2
+
+[node name="LabelDept" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowDept" unique_id=1252431178]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Department:"
+vertical_alignment = 1
+
+[node name="InputDepartment" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowDept" unique_id=220962397]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Information Technology"
+
+[node name="RowAddress" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1151987834]
+layout_mode = 2
+
+[node name="LabelAddress" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowAddress" unique_id=1593645523]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Address:"
+vertical_alignment = 1
+
+[node name="InputAddress" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowAddress" unique_id=190140243]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "123 Main St, City"
+
+[node name="Sep1" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=567766861]
+layout_mode = 2
+
+[node name="GovLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form" unique_id=401917003]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Government IDs"
+
+[node name="RowSSS" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1086423735]
+layout_mode = 2
+
+[node name="LabelSSS" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowSSS" unique_id=857101965]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "SSS No.:"
+vertical_alignment = 1
+
+[node name="InputSSS" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowSSS" unique_id=575731377]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "XX-XXXXXXX-X"
+
+[node name="RowTIN" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=400294615]
+layout_mode = 2
+
+[node name="LabelTIN" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowTIN" unique_id=763125422]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "TIN:"
+vertical_alignment = 1
+
+[node name="InputTIN" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowTIN" unique_id=2119062817]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "XXX-XXX-XXX"
+
+[node name="RowPhilHealth" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1850547287]
+layout_mode = 2
+
+[node name="LabelPhilHealth" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowPhilHealth" unique_id=268331101]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "PhilHealth No.:"
+vertical_alignment = 1
+
+[node name="InputPhilHealth" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowPhilHealth" unique_id=642664821]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "XX-XXXXXXXXX-X"
+
+[node name="RowPagIbig" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=301377214]
+layout_mode = 2
+
+[node name="LabelPagIbig" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowPagIbig" unique_id=1118039576]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Pag-IBIG No.:"
+vertical_alignment = 1
+
+[node name="InputPagIbig" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowPagIbig" unique_id=658200502]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "XXXX-XXXX-XXXX"
+
+[node name="Sep2" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=2027909707]
+layout_mode = 2
+
+[node name="ECLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form" unique_id=708996622]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Emergency Contact"
+
+[node name="RowEC" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=173293526]
+layout_mode = 2
+
+[node name="LabelEC" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowEC" unique_id=1917573587]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Person / Number:"
+vertical_alignment = 1
+
+[node name="ECVBox" type="VBoxContainer" parent="HSplit/LeftPanel/Scroll/Form/RowEC" unique_id=1240092509]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputECPerson" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowEC/ECVBox" unique_id=410589212]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Contact Person Name"
+
+[node name="InputECNumber" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowEC/ECVBox" unique_id=949359612]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "+63 9XX XXX XXXX"
+
+[node name="Sep3" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=919867194]
+layout_mode = 2
+
+[node name="PhotoLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form" unique_id=2103493957]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Profile Photo"
+
+[node name="RowPhoto" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=187793438]
+layout_mode = 2
+
+[node name="BrowsePhotoBtn" type="Button" parent="HSplit/LeftPanel/Scroll/Form/RowPhoto" unique_id=122008673]
+layout_mode = 2
+text = "Browse PNG..."
+
+[node name="PhotoPathLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowPhoto" unique_id=640013188]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "No file selected"
+clip_text = true
+
+[node name="Sep4" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1386047045]
+layout_mode = 2
+
+[node name="ActionRow" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1023021410]
+layout_mode = 2
+alignment = 1
+
+[node name="FlipBtn" type="Button" parent="HSplit/LeftPanel/Scroll/Form/ActionRow" unique_id=222222221]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+toggle_mode = true
+text = "Flip ↩"
+
+[node name="ExportBtn" type="Button" parent="HSplit/LeftPanel/Scroll/Form/ActionRow" unique_id=222222222]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+text = "Export PNG"
+
+[node name="ClearBtn" type="Button" parent="HSplit/LeftPanel/Scroll/Form/ActionRow" unique_id=2085801051]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+text = "Clear All"
+
+[node name="RightPanel" type="PanelContainer" parent="HSplit" unique_id=147494396]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PreviewVBox" type="VBoxContainer" parent="HSplit/RightPanel" unique_id=718872644]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PreviewTitle" type="Label" parent="HSplit/RightPanel/PreviewVBox" unique_id=1235229619]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "ID Preview"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="IDCard" type="Control" parent="HSplit/RightPanel/PreviewVBox" unique_id=268007270]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(328.735, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="FrontSide" type="Control" parent="HSplit/RightPanel/PreviewVBox/IDCard" unique_id=333333301]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="HSplit/RightPanel/PreviewVBox/IDCard/FrontSide" unique_id=1325355350]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.9999999
+offset_right = 955.265
+offset_bottom = 1478.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25599697, 0.25599697)
+texture = ExtResource("2_bg")
+stretch_mode = 5
+
+[node name="Photo" type="TextureRect" parent="HSplit/RightPanel/PreviewVBox/IDCard/FrontSide" unique_id=1063009183]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36199367
+anchor_top = 0.178
+anchor_right = 0.848708
+anchor_bottom = 0.5252645
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="Overlay" type="TextureRect" parent="HSplit/RightPanel/PreviewVBox/IDCard/FrontSide" unique_id=1300203986]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.7656555e-05
+offset_top = -39.0
+offset_right = 955.265
+offset_bottom = 1727.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25679302, 0.25679302)
+mouse_filter = 2
+texture = ExtResource("3_overlay")
+stretch_mode = 5
+
+[node name="Header" type="TextureRect" parent="HSplit/RightPanel/PreviewVBox/IDCard/FrontSide" unique_id=333333310]
+unique_name_in_owner = true
+clip_children = 2
+oversampling_with_scale = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.18
+offset_top = -8.0
+offset_right = -233.22711
+offset_bottom = 54.162003
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.4447424, 3.4447424)
+texture = ExtResource("5_jmc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FrontLabels" type="Control" parent="HSplit/RightPanel/PreviewVBox/IDCard/FrontSide" unique_id=85086479]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LblName" type="Label" parent="HSplit/RightPanel/PreviewVBox/IDCard/FrontSide/FrontLabels" unique_id=113154013]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2829027
+anchor_top = 0.57
+anchor_right = 0.9229027
+anchor_bottom = 0.72
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+vertical_alignment = 1
+autowrap_mode = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="LblRole" type="Label" parent="HSplit/RightPanel/PreviewVBox/IDCard/FrontSide/FrontLabels" unique_id=259193416]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2829027
+anchor_top = 0.702
+anchor_right = 0.9229027
+anchor_bottom = 0.822
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="LblDepartment" type="Label" parent="HSplit/RightPanel/PreviewVBox/IDCard/FrontSide/FrontLabels" unique_id=655230198]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.039545555
+anchor_top = 0.942
+anchor_right = 0.6795456
+anchor_bottom = 1.052
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="LblNumber" type="Label" parent="HSplit/RightPanel/PreviewVBox/IDCard/FrontSide/FrontLabels" unique_id=1499806163]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.33
+anchor_top = 0.5
+anchor_right = 0.9700001
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="LblEC" type="Label" parent="HSplit/RightPanel/PreviewVBox/IDCard/FrontSide/FrontLabels" unique_id=1449174576]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.33
+anchor_top = 0.6
+anchor_right = 0.9700001
+anchor_bottom = 0.72
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BackSide" type="Control" parent="HSplit/RightPanel/PreviewVBox/IDCard" unique_id=333333401]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackBackground" type="TextureRect" parent="HSplit/RightPanel/PreviewVBox/IDCard/BackSide" unique_id=333333402]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -39.0
+offset_right = 955.265
+offset_bottom = 1727.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2562667, 0.2562667)
+texture = ExtResource("4_back")
+stretch_mode = 5
+
+[node name="BackLabels" type="Control" parent="HSplit/RightPanel/PreviewVBox/IDCard/BackSide" unique_id=333333410]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LblAddress" type="Label" parent="HSplit/RightPanel/PreviewVBox/IDCard/BackSide/BackLabels" unique_id=1078948370]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.12
+anchor_right = 0.96
+anchor_bottom = 0.27
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 1
+
+[node name="LblSSS" type="Label" parent="HSplit/RightPanel/PreviewVBox/IDCard/BackSide/BackLabels" unique_id=1003133982]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.38
+anchor_right = 0.5
+anchor_bottom = 0.48
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+
+[node name="LblTIN" type="Label" parent="HSplit/RightPanel/PreviewVBox/IDCard/BackSide/BackLabels" unique_id=1162009657]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.38
+anchor_right = 0.96
+anchor_bottom = 0.48
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+
+[node name="LblPhilHealth" type="Label" parent="HSplit/RightPanel/PreviewVBox/IDCard/BackSide/BackLabels" unique_id=1949414181]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.51
+anchor_right = 0.5
+anchor_bottom = 0.61
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+
+[node name="LblPagIbig" type="Label" parent="HSplit/RightPanel/PreviewVBox/IDCard/BackSide/BackLabels" unique_id=1288302646]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.51
+anchor_right = 0.96
+anchor_bottom = 0.61
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+
+[node name="LblECBack" type="Label" parent="HSplit/RightPanel/PreviewVBox/IDCard/BackSide/BackLabels" unique_id=333333420]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.73
+anchor_right = 0.96
+anchor_bottom = 0.88
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 1
+
+[node name="size" type="ColorRect" parent="HSplit/RightPanel/PreviewVBox/IDCard" unique_id=1469339710]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.22745098, 0.32156864, 0.46666667)
+metadata/_edit_lock_ = true
+
+[connection signal="item_selected" from="HSplit/LeftPanel/Scroll/Form/RowCompany/CompanyDropdown" to="." method="_on_company_selected"]
+[connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/RowPhoto/BrowsePhotoBtn" to="." method="_on_browse_photo_pressed"]
+[connection signal="toggled" from="HSplit/LeftPanel/Scroll/Form/ActionRow/FlipBtn" to="." method="_on_flip_toggled"]
+[connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/ActionRow/ExportBtn" to="." method="_on_export_pressed"]
+[connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/ActionRow/ClearBtn" to="." method="_on_clear_pressed"]
