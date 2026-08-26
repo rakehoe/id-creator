@@ -416,6 +416,8 @@ offset_right = 326.0
 offset_bottom = 292.0
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
 theme_override_font_sizes/font_size = 10
+text = "
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
@@ -430,12 +432,14 @@ offset_bottom = 358.0
 theme_override_constants/separation = -11
 alignment = 1
 
-[node name="LblName" type="Label" parent="HSplit/RightPanel/PreviewVBox/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=735821092]
+[node name="LblName2" type="Label" parent="HSplit/RightPanel/PreviewVBox/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=735821092]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
 theme_override_font_sizes/font_size = 10
+text = "
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
@@ -447,6 +451,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 6
+text = "
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -470,6 +476,8 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
 theme_override_font_sizes/font_size = 5
+text = "
+"
 vertical_alignment = 1
 uppercase = true
 metadata/_edit_use_anchors_ = true
@@ -487,6 +495,7 @@ grow_vertical = 2
 rotation = -1.5707964
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 22
+text = "mis department"
 vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
