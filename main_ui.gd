@@ -62,7 +62,8 @@ const HEADER_PATHS : Array[String] = [
 @onready var flip_btn			: Button = %FlipBtn
 
 # ── ID Card container (used for export capture) ────────────────────────
-@onready var id_card			: Control = %IDCard
+@onready var id_card			: PanelContainer = %IDCard
+
 
 # ── State ──────────────────────────────────────────────────────────────
 var _photo_texture		: ImageTexture = null
@@ -190,6 +191,7 @@ func _on_export_pressed() -> void:
 	dir_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	dir_dialog.access    = FileDialog.ACCESS_FILESYSTEM
 	dir_dialog.filters   = PackedStringArray(["*.png ; PNG Images"])
+	dir_dialog.current_dir = "D:/RJ files/RFIDS"
 	dir_dialog.title     = "Export ID – choose save location"
 	dir_dialog.current_file = base_name + "_front.png"
 	dir_dialog.min_size  = Vector2i(700, 500)
@@ -206,12 +208,7 @@ func _do_export(chosen_path: String, dialog: FileDialog, base_name: String) -> v
 
 	_export_side(front_side, back_side, save_dir, base_name)
 
-func _export_side(
-	front: Control,
-	back: Control,
-	save_dir: String,
-	base_name: String
-) -> void:
+func _export_side( front: Control, back: Control, save_dir: String, base_name: String) -> void:
 	var card_size := id_card.size
 
 	# ── Export FRONT ──────────────────────────────────────────────────
@@ -223,6 +220,7 @@ func _export_side(
 	var front_img  := front_vp.get_texture().get_image()
 	var card_rect  := _get_card_screen_rect()
 	front_img      = front_img.get_region(card_rect)
+	front_img.resize(card_size.x, card_size.y, Image.INTERPOLATE_LANCZOS)
 	front_img.save_png(save_dir.path_join(base_name + "_front.png"))
 
 	# ── Export BACK ───────────────────────────────────────────────────
@@ -233,6 +231,7 @@ func _export_side(
 	var back_vp   := back.get_viewport()
 	var back_img  := back_vp.get_texture().get_image()
 	back_img       = back_img.get_region(card_rect)
+	back_img.resize(card_size.x, card_size.y, Image.INTERPOLATE_LANCZOS)
 	back_img.save_png(save_dir.path_join(base_name + "_back.png"))
 
 	# ── Restore preview state ─────────────────────────────────────────
@@ -244,8 +243,8 @@ func _export_side(
 
 func _get_card_screen_rect() -> Rect2i:
 	var vp_size  := get_viewport().get_visible_rect().size
-	var card_pos := id_card.get_global_rect().position
-	var card_sz  := id_card.get_global_rect().size
+	var card_pos = id_card.get_global_rect().position
+	var card_sz  = id_card.get_global_rect().size
 	return Rect2i(
 		int(card_pos.x), int(card_pos.y),
 		int(card_sz.x),  int(card_sz.y)
