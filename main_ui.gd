@@ -61,8 +61,16 @@ const HEADER_PATHS : Array[String] = [
 # ── Flip button ────────────────────────────────────────────────────────
 @onready var flip_btn			: Button = %FlipBtn
 
-# ── ID Card container (used for export capture) ────────────────────────
-@onready var id_card			: PanelContainer = %IDCard
+# ── ID Card container & viewport (used for export capture) ─────────────
+# CHANGED: Added references to IDContainer (SubViewportContainer) and IDviewport (SubViewport)
+# WHY: We need direct access to temporarily adjust the viewport resolution to full 1284x1980 during export
+@onready var id_card			: PanelContainer     = %IDCard
+@onready var id_container		: SubViewportContainer = %IDContainer
+@onready var id_viewport		: SubViewport        = %IDviewport
+
+# CHANGED: Added native ID card resolution constant
+# WHY: Matches the original asset resolution (1284x1980) so exported PNGs are full high-res print quality
+const NATIVE_ID_SIZE : Vector2i = Vector2i(1284, 1980)
 
 
 # ── State ──────────────────────────────────────────────────────────────
@@ -208,19 +216,25 @@ func _do_export(chosen_path: String, dialog: FileDialog, base_name: String) -> v
 
 	_export_side(front_side, back_side, save_dir, base_name)
 
-func _export_side( front: Control, back: Control, save_dir: String, base_name: String) -> void:
-	var card_size := id_card.size
+func _export_side(front: Control, back: Control, save_dir: String, base_name: String) -> void:
+	# CHANGED: 1. Save original container stretch mode and viewport size
+	# WHY: During regular UI preview, stretch=true keeps the viewport scaled to the UI window (~400x674)
+	var orig_stretch : bool     = id_container.stretch
+	var orig_vp_size : Vector2i = id_viewport.size
+
+	# CHANGED: 2. Temporarily switch SubViewport to full native resolution (1284x1980)
+	# WHY: Disabling container stretch allows the SubViewport to render at its true 1284x1980 asset resolution
+	id_container.stretch = false
+	id_viewport.size = NATIVE_ID_SIZE
 
 	# ── Export FRONT ──────────────────────────────────────────────────
 	front.visible = true
 	back.visible  = false
 	await RenderingServer.frame_post_draw
 
-	var front_vp   := front.get_viewport()
-	var front_img  := front_vp.get_texture().get_image()
-	var card_rect  := _get_card_screen_rect()
-	front_img      = front_img.get_region(card_rect)
-	front_img.resize(card_size.x, card_size.y, Image.INTERPOLATE_LANCZOS)
+	# CHANGED: 3. Capture directly from id_viewport texture without get_region()
+	# WHY: id_viewport is now rendering at exactly 1284x1980, so get_image() is already the full card image
+	var front_img := id_viewport.get_texture().get_image()
 	front_img.save_png(save_dir.path_join(base_name + "_front.png"))
 
 	# ── Export BACK ───────────────────────────────────────────────────
@@ -228,27 +242,20 @@ func _export_side( front: Control, back: Control, save_dir: String, base_name: S
 	back.visible  = true
 	await RenderingServer.frame_post_draw
 
-	var back_vp   := back.get_viewport()
-	var back_img  := back_vp.get_texture().get_image()
-	back_img       = back_img.get_region(card_rect)
-	back_img.resize(card_size.x, card_size.y, Image.INTERPOLATE_LANCZOS)
+	# CHANGED: 4. Capture back image directly at full 1284x1980 resolution
+	var back_img := id_viewport.get_texture().get_image()
 	back_img.save_png(save_dir.path_join(base_name + "_back.png"))
 
 	# ── Restore preview state ─────────────────────────────────────────
+	# CHANGED: 5. Restore original UI viewport size and stretch mode
+	# WHY: Returns the on-screen preview back to normal responsive UI scaling
+	id_container.stretch = orig_stretch
+	id_viewport.size = orig_vp_size
 	front.visible = not _showing_back
 	back.visible  = _showing_back
 
 	print("Exported: ", save_dir.path_join(base_name + "_front.png"))
 	print("Exported: ", save_dir.path_join(base_name + "_back.png"))
-
-func _get_card_screen_rect() -> Rect2i:
-	var vp_size  := get_viewport().get_visible_rect().size
-	var card_pos = id_card.get_global_rect().position
-	var card_sz  = id_card.get_global_rect().size
-	return Rect2i(
-		int(card_pos.x), int(card_pos.y),
-		int(card_sz.x),  int(card_sz.y)
-	)
 
 # ──────────────────────────────────────────────────────────────────────
 func _on_clear_pressed() -> void:

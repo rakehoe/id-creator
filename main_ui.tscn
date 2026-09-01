@@ -401,6 +401,7 @@ size_flags_horizontal = 4
 
 [node name="FrontSide" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard" unique_id=333333301]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="Background" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide" unique_id=1325355350]
@@ -606,7 +607,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BackSide" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard" unique_id=333333401]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="BackBackground" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide" unique_id=333333402]
@@ -649,11 +649,12 @@ offset_left = -3.0517578e-05
 offset_bottom = -3.0517578e-05
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.101960786, 0.09019608, 0.3764706, 1)
+theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
+theme_override_fonts/font = ExtResource("7_1v8me")
 theme_override_font_sizes/font_size = 47
 text = "rico john casquete"
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels" unique_id=2053173414]
@@ -669,7 +670,7 @@ metadata/_edit_use_anchors_ = true
 [node name="LblSSS" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1003133982]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.09019608, 0.3764706, 1)
+theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
 theme_override_fonts/font = ExtResource("7_1v8me")
 theme_override_font_sizes/font_size = 50
 text = "rico john casquete"
@@ -677,7 +678,7 @@ text = "rico john casquete"
 [node name="LblTIN" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1162009657]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.09019608, 0.3764706, 1)
+theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
 theme_override_fonts/font = ExtResource("7_1v8me")
 theme_override_font_sizes/font_size = 50
 text = "rico john casquete"
@@ -685,7 +686,7 @@ text = "rico john casquete"
 [node name="LblPhilHealth" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1949414181]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.09019608, 0.3764706, 1)
+theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
 theme_override_fonts/font = ExtResource("7_1v8me")
 theme_override_font_sizes/font_size = 50
 text = "rico john casquete"
@@ -693,7 +694,7 @@ text = "rico john casquete"
 [node name="LblPagIbig" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1288302646]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.09019608, 0.3764706, 1)
+theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
 theme_override_fonts/font = ExtResource("7_1v8me")
 theme_override_font_sizes/font_size = 50
 text = "rico john casquete"
@@ -712,8 +713,9 @@ offset_right = 22.46997
 offset_bottom = -551.1686
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.101960786, 0.09019608, 0.3764706, 1)
+theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
 theme_override_constants/line_spacing = -10
+theme_override_fonts/font = ExtResource("7_1v8me")
 theme_override_font_sizes/font_size = 47
 text = "rico john casquete
 09043654"
