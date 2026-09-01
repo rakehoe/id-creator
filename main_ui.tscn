@@ -5,6 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://dd5b211u0jx07" path="res://assets/font-temp.png" id="3_overlay"]
 [ext_resource type="Texture2D" uid="uid://cjdkn18hrxvmc" path="res://assets/back-temp.png" id="4_back"]
 [ext_resource type="Texture2D" uid="uid://d2ln5jy2u4eus" path="res://assets/headers/jmc-header.png" id="5_jmc"]
+[ext_resource type="FontFile" uid="uid://dla4pdwptqltb" path="res://assets/fonts/BREATHING.TTF" id="5_n1q3t"]
+[ext_resource type="FontFile" uid="uid://ukv8vt6unjkl" path="res://assets/fonts/poppins/POPPINS-EXTRABOLD.OTF" id="6_il2or"]
+[ext_resource type="FontFile" uid="uid://qktvr78rkm8c" path="res://assets/fonts/poppins/POPPINS-MEDIUM.OTF" id="7_1v8me"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ncsem"]
 
 [node name="main_UI" type="Control" unique_id=625672535]
 layout_mode = 3
@@ -14,6 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
+metadata/_edit_horizontal_guides_ = [396.0]
 
 [node name="HSplit" type="HSplitContainer" parent="." unique_id=802214261]
 layout_mode = 1
@@ -301,10 +307,9 @@ custom_minimum_size = Vector2(100, 36)
 layout_mode = 2
 text = "Clear All"
 
-[node name="RightPanel" type="SubViewportContainer" parent="HSplit" unique_id=535787031]
+[node name="RightPanel" type="PanelContainer" parent="HSplit" unique_id=1577618258]
 custom_maximum_size = Vector2(400, -1)
 layout_mode = 2
-stretch = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel" unique_id=219869956]
 custom_minimum_size = Vector2(400, 0)
@@ -326,13 +331,14 @@ size_flags_vertical = 3
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer" unique_id=1995323642]
+handle_input_locally = false
 size = Vector2i(400, 674)
 size_2d_override = Vector2i(1284, 1980)
 size_2d_override_stretch = true
+render_target_update_mode = 4
 
 [node name="IDCard" type="PanelContainer" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport" unique_id=184564071]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(328.735, 500)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -358,9 +364,9 @@ texture = ExtResource("2_bg")
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.36199367
-anchor_top = 0.178
-anchor_right = 0.848708
+anchor_left = 0.30999988
+anchor_top = 0.11795252
+anchor_right = 0.90250003
 anchor_bottom = 0.5252645
 grow_horizontal = 2
 grow_vertical = 2
@@ -378,6 +384,20 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_overlay")
+
+[node name="Signature" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/FrontSide" unique_id=831710602]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.30999988
+anchor_top = 0.7010386
+anchor_right = 0.90250003
+anchor_bottom = 0.8709617
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
 
 [node name="Header" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/FrontSide" unique_id=333333310]
 unique_name_in_owner = true
@@ -403,78 +423,88 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="LblNickName" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/FrontSide/FrontLabels" unique_id=113154013]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 722.24994
-offset_top = 975.3116
-offset_right = 972.24994
-offset_bottom = 1006.3116
-theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
-theme_override_font_sizes/font_size = 85
-text = "
-"
+offset_left = 356.3101
+offset_top = 916.55786
+offset_right = 1210.5503
+offset_bottom = 1256.5579
+theme_override_colors/font_color = Color(1, 0.003921569, 0.06666667, 1)
+theme_override_fonts/font = ExtResource("5_n1q3t")
+theme_override_font_sizes/font_size = 151
+text = "Rico John"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
-uppercase = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/FrontSide/FrontLabels" unique_id=1425439134]
-layout_mode = 0
-offset_left = 76.0
-offset_top = 318.0
-offset_right = 326.0
-offset_bottom = 358.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23000005
+anchor_top = 0.5823442
+anchor_right = 0.99250007
+anchor_bottom = 0.80709165
 theme_override_constants/separation = -11
-alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="LblName2" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=735821092]
+[node name="LblName" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=735821092]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
-theme_override_font_sizes/font_size = 85
-text = "
-"
+theme_override_constants/line_spacing = -50
+theme_override_fonts/font = ExtResource("6_il2or")
+theme_override_font_sizes/font_size = 72
+text = "Rico john t. casquete"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 uppercase = true
+
+[node name="HSeparator2" type="HSeparator" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=182280792]
+layout_mode = 2
+theme_override_constants/separation = -41
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ncsem")
 
 [node name="LblRole" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=259193416]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 85
-text = "
-"
+theme_override_fonts/font = ExtResource("6_il2or")
+theme_override_font_sizes/font_size = 40
+text = "dialysis claims processor"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=1728189719]
-custom_minimum_size = Vector2(200, 0)
+[node name="HSeparator" type="HSeparator" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=1263754982]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 1
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ncsem")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=1728189719]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 11
 alignment = 1
 
 [node name="id" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/FrontSide/FrontLabels/VBoxContainer/HBoxContainer" unique_id=1541361973]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
-theme_override_font_sizes/font_size = 85
-text = "id: "
+theme_override_fonts/font = ExtResource("7_1v8me")
+theme_override_font_sizes/font_size = 40
+text = "id:"
 uppercase = true
 
 [node name="LblNumber" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/FrontSide/FrontLabels/VBoxContainer/HBoxContainer" unique_id=1499806163]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
-theme_override_font_sizes/font_size = 85
-text = "
-"
+theme_override_fonts/font = ExtResource("7_1v8me")
+theme_override_font_sizes/font_size = 40
+text = "300728"
 vertical_alignment = 1
 uppercase = true
 metadata/_edit_use_anchors_ = true
@@ -483,13 +513,13 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.039545555
-anchor_top = 0.942
-anchor_right = 0.6795456
-anchor_bottom = 1.052
-offset_top = 78.20117
-offset_right = 78.20117
-offset_bottom = 78.20117
+anchor_left = 0.03954556
+anchor_top = 0.5269697
+anchor_right = 0.20917192
+anchor_bottom = 0.5269697
+offset_top = 899.9612
+offset_right = 682.1609
+offset_bottom = 1117.7615
 grow_vertical = 2
 rotation = -1.5707964
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -498,6 +528,7 @@ text = "mis department"
 vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
+metadata/_edit_use_anchors_ = true
 
 [node name="LblEC" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/FrontSide/FrontLabels" unique_id=1449174576]
 unique_name_in_owner = true
