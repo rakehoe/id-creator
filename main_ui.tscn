@@ -2,12 +2,16 @@
 
 [ext_resource type="Script" uid="uid://c6w4pdj3el1kn" path="res://main_ui.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://b0a4cvuy0dake" path="res://assets/bg-temp.jpg" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://cb1vwbha0m63k" path="res://assets/Layer 1.png" id="3_b7t0n"]
 [ext_resource type="Texture2D" uid="uid://dd5b211u0jx07" path="res://assets/font-temp.png" id="3_overlay"]
 [ext_resource type="Texture2D" uid="uid://cjdkn18hrxvmc" path="res://assets/back-temp.png" id="4_back"]
 [ext_resource type="Texture2D" uid="uid://d2ln5jy2u4eus" path="res://assets/headers/jmc-header.png" id="5_jmc"]
 [ext_resource type="FontFile" uid="uid://dla4pdwptqltb" path="res://assets/fonts/BREATHING.TTF" id="5_n1q3t"]
 [ext_resource type="FontFile" uid="uid://ukv8vt6unjkl" path="res://assets/fonts/poppins/POPPINS-EXTRABOLD.OTF" id="6_il2or"]
 [ext_resource type="FontFile" uid="uid://qktvr78rkm8c" path="res://assets/fonts/poppins/POPPINS-MEDIUM.OTF" id="7_1v8me"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1v8me"]
+content_margin_left = 23.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ncsem"]
 
@@ -19,7 +23,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
-metadata/_edit_horizontal_guides_ = [396.0]
+metadata/_edit_horizontal_guides_ = [396.0, 139.0, 201.0]
+metadata/_edit_vertical_guides_ = [973.0]
 
 [node name="HSplit" type="HSplitContainer" parent="." unique_id=802214261]
 layout_mode = 1
@@ -60,6 +65,7 @@ layout_mode = 2
 [node name="LabelCompany" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowCompany" unique_id=111111112]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Company:"
 vertical_alignment = 1
 
@@ -77,6 +83,7 @@ layout_mode = 2
 [node name="LabelName" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowName" unique_id=1072790023]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Complete Name:"
 vertical_alignment = 1
 
@@ -92,10 +99,12 @@ layout_mode = 2
 [node name="LabelName" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowNickName" unique_id=856665067]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "NickName:"
 vertical_alignment = 1
 
-[node name="InputName" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowNickName" unique_id=292183968]
+[node name="InputNickName" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowNickName" unique_id=292183968]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Juan"
@@ -106,6 +115,7 @@ layout_mode = 2
 [node name="LabelRole" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowRole" unique_id=1845307030]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Role / Position:"
 vertical_alignment = 1
 
@@ -121,6 +131,7 @@ layout_mode = 2
 [node name="LabelNumber" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowNumber" unique_id=1706127293]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "ID Number:"
 vertical_alignment = 1
 
@@ -128,7 +139,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "2024-0001"
+placeholder_text = "300000"
 
 [node name="RowDept" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1562361942]
 layout_mode = 2
@@ -136,6 +147,7 @@ layout_mode = 2
 [node name="LabelDept" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowDept" unique_id=1252431178]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Department:"
 vertical_alignment = 1
 
@@ -151,6 +163,7 @@ layout_mode = 2
 [node name="LabelAddress" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowAddress" unique_id=1593645523]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Address:"
 vertical_alignment = 1
 
@@ -166,6 +179,7 @@ layout_mode = 2
 [node name="GovLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form" unique_id=401917003]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Government IDs"
 
 [node name="RowSSS" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1086423735]
@@ -174,6 +188,7 @@ layout_mode = 2
 [node name="LabelSSS" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowSSS" unique_id=857101965]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "SSS No.:"
 vertical_alignment = 1
 
@@ -189,6 +204,7 @@ layout_mode = 2
 [node name="LabelTIN" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowTIN" unique_id=763125422]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "TIN:"
 vertical_alignment = 1
 
@@ -204,6 +220,7 @@ layout_mode = 2
 [node name="LabelPhilHealth" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowPhilHealth" unique_id=268331101]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "PhilHealth No.:"
 vertical_alignment = 1
 
@@ -219,6 +236,7 @@ layout_mode = 2
 [node name="LabelPagIbig" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowPagIbig" unique_id=1118039576]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Pag-IBIG No.:"
 vertical_alignment = 1
 
@@ -234,6 +252,7 @@ layout_mode = 2
 [node name="ECLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form" unique_id=708996622]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Emergency Contact"
 
 [node name="RowEC" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=173293526]
@@ -242,6 +261,7 @@ layout_mode = 2
 [node name="LabelEC" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowEC" unique_id=1917573587]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Person / Number:"
 vertical_alignment = 1
 
@@ -264,26 +284,57 @@ placeholder_text = "+63 9XX XXX XXXX"
 [node name="Sep3" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=919867194]
 layout_mode = 2
 
-[node name="PhotoLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form" unique_id=2103493957]
+[node name="PhotoContainer" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1693241688]
+layout_mode = 2
+theme_override_constants/separation = 61
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer" unique_id=1030128397]
+layout_mode = 2
+
+[node name="PhotoLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer" unique_id=2103493957]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Profile Photo"
+horizontal_alignment = 1
+uppercase = true
 
-[node name="RowPhoto" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=187793438]
-layout_mode = 2
-
-[node name="BrowsePhotoBtn" type="Button" parent="HSplit/LeftPanel/Scroll/Form/RowPhoto" unique_id=122008673]
-layout_mode = 2
-text = "Browse PNG..."
-
-[node name="PhotoPathLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowPhoto" unique_id=640013188]
+[node name="BrowsePhotoBtn" type="Button" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer" unique_id=122008673]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-text = "No file selected"
-clip_text = true
+text = "Browse File 📂"
 
-[node name="Sep4" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1386047045]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer" unique_id=31257720]
+layout_mode = 2
+
+[node name="SignatureLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer2" unique_id=676163321]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Signature Photo"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="BrowseSigBtn" type="Button" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer2" unique_id=57222738]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Browse File 📂"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer" unique_id=1097050734]
+layout_mode = 2
+
+[node name="QrLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer3" unique_id=2090075626]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "QR Code"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="BrowseQrBtn" type="Button" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer3" unique_id=8577086]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Browse File 📂"
+
+[node name="Sep4" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1043944324]
 layout_mode = 2
 
 [node name="ActionRow" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1023021410]
@@ -370,6 +421,7 @@ anchor_right = 0.90250003
 anchor_bottom = 0.5252645
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_b7t0n")
 expand_mode = 1
 stretch_mode = 6
 metadata/_edit_use_anchors_ = true
@@ -389,9 +441,9 @@ texture = ExtResource("3_overlay")
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.30999988
+anchor_left = 0.2700002
 anchor_top = 0.7010386
-anchor_right = 0.90250003
+anchor_right = 0.9400002
 anchor_bottom = 0.8709617
 grow_horizontal = 2
 grow_vertical = 2
@@ -429,9 +481,9 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 356.3101
-offset_top = 916.55786
+offset_top = 906.55786
 offset_right = 1210.5503
-offset_bottom = 1256.5579
+offset_bottom = 1246.5579
 theme_override_colors/font_color = Color(1, 0.003921569, 0.06666667, 1)
 theme_override_fonts/font = ExtResource("5_n1q3t")
 theme_override_font_sizes/font_size = 151
@@ -444,9 +496,9 @@ autowrap_mode = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.23000005
-anchor_top = 0.5823442
+anchor_top = 0.59800076
 anchor_right = 0.99250007
-anchor_bottom = 0.80709165
+anchor_bottom = 0.82274824
 theme_override_constants/separation = -11
 metadata/_edit_use_anchors_ = true
 
@@ -474,7 +526,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_il2or")
 theme_override_font_sizes/font_size = 40
-text = "dialysis claims processor"
+text = "Multimedia assistant/ developer"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -513,20 +565,22 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.03954556
-anchor_top = 0.5269697
-anchor_right = 0.20917192
-anchor_bottom = 0.5269697
-offset_top = 899.9612
-offset_right = 682.1609
-offset_bottom = 1117.7615
+anchor_left = 0.040000003
+anchor_top = 0.2254521
+anchor_right = 0.209
+anchor_bottom = 0.95600003
+offset_left = -0.58351135
+offset_top = 1447.3694
+offset_right = 1191.4258
+offset_bottom = 218.68494
 grow_vertical = 2
 rotation = -1.5707964
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_il2or")
 theme_override_font_sizes/font_size = 85
 text = "mis department"
 vertical_alignment = 1
-autowrap_mode = 2
+clip_text = true
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
@@ -563,6 +617,15 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_back")
 
+[node name="QR" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/BackSide" unique_id=1723808020]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.7949999
+anchor_top = 0.025964394
+anchor_right = 0.96499985
+anchor_bottom = 0.13575667
+metadata/_edit_use_anchors_ = true
+
 [node name="BackLabels" type="Control" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/BackSide" unique_id=333333410]
 layout_mode = 1
 anchors_preset = 15
@@ -576,62 +639,62 @@ mouse_filter = 2
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.04
-anchor_top = 0.12
-anchor_right = 0.96
-anchor_bottom = 0.27
+anchor_left = 0.32749993
+anchor_top = 0.16839764
+anchor_right = 0.95750004
+anchor_bottom = 0.25890207
+offset_left = -3.0517578e-05
+offset_bottom = -3.0517578e-05
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.101960786, 0.09019608, 0.3764706, 1)
+theme_override_font_sizes/font_size = 47
+text = "rico john casquete"
+vertical_alignment = 1
 autowrap_mode = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="LblSSS" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/BackSide/BackLabels" unique_id=1003133982]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.04
-anchor_top = 0.38
-anchor_right = 0.5
-anchor_bottom = 0.48
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 9
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/BackSide/BackLabels" unique_id=2053173414]
+layout_mode = 0
+anchor_left = 0.59
+anchor_top = 0.26780418
+anchor_right = 0.9900001
+anchor_bottom = 0.42639002
+offset_left = 6.1035156e-05
+theme_override_constants/separation = 10
+metadata/_edit_use_anchors_ = true
 
-[node name="LblTIN" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/BackSide/BackLabels" unique_id=1162009657]
+[node name="LblSSS" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1003133982]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.38
-anchor_right = 0.96
-anchor_bottom = 0.48
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 9
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.09019608, 0.3764706, 1)
+theme_override_fonts/font = ExtResource("7_1v8me")
+theme_override_font_sizes/font_size = 50
+text = "rico john casquete"
 
-[node name="LblPhilHealth" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/BackSide/BackLabels" unique_id=1949414181]
+[node name="LblTIN" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1162009657]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.04
-anchor_top = 0.51
-anchor_right = 0.5
-anchor_bottom = 0.61
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 9
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.09019608, 0.3764706, 1)
+theme_override_fonts/font = ExtResource("7_1v8me")
+theme_override_font_sizes/font_size = 50
+text = "rico john casquete"
 
-[node name="LblPagIbig" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/BackSide/BackLabels" unique_id=1288302646]
+[node name="LblPhilHealth" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1949414181]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.51
-anchor_right = 0.96
-anchor_bottom = 0.61
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 9
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.09019608, 0.3764706, 1)
+theme_override_fonts/font = ExtResource("7_1v8me")
+theme_override_font_sizes/font_size = 50
+text = "rico john casquete"
+
+[node name="LblPagIbig" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1288302646]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.09019608, 0.3764706, 1)
+theme_override_fonts/font = ExtResource("7_1v8me")
+theme_override_font_sizes/font_size = 50
+text = "rico john casquete"
 
 [node name="LblECBack" type="Label" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard/BackSide/BackLabels" unique_id=333333420]
 unique_name_in_owner = true
@@ -641,9 +704,17 @@ anchor_left = 0.04
 anchor_top = 0.73
 anchor_right = 0.96
 anchor_bottom = 0.88
+offset_left = 658.05005
+offset_top = -377.55127
+offset_right = 22.46997
+offset_bottom = -551.1686
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.101960786, 0.09019608, 0.3764706, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 47
+text = "rico john casquete
+09043654"
 autowrap_mode = 1
 
 [node name="size" type="ColorRect" parent="HSplit/RightPanel/VBoxContainer/SubViewportContainer/SubViewport/IDCard" unique_id=1469339710]
@@ -653,7 +724,9 @@ color = Color(1, 0.22745098, 0.32156864, 0.46666667)
 metadata/_edit_lock_ = true
 
 [connection signal="item_selected" from="HSplit/LeftPanel/Scroll/Form/RowCompany/CompanyDropdown" to="." method="_on_company_selected"]
-[connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/RowPhoto/BrowsePhotoBtn" to="." method="_on_browse_photo_pressed"]
+[connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer/BrowsePhotoBtn" to="." method="_on_browse_photo_pressed" flags=18 binds= ["profile"]]
+[connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer2/BrowseSigBtn" to="." method="_on_browse_photo_pressed" flags=18 binds= ["signature"]]
+[connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer3/BrowseQrBtn" to="." method="_on_browse_photo_pressed" flags=18 binds= ["qrcode"]]
 [connection signal="toggled" from="HSplit/LeftPanel/Scroll/Form/ActionRow/FlipBtn" to="." method="_on_flip_toggled"]
 [connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/ActionRow/ExportBtn" to="." method="_on_export_pressed"]
 [connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/ActionRow/ClearBtn" to="." method="_on_clear_pressed"]

@@ -10,70 +10,76 @@ const HEADER_PATHS : Array[String] = [
 ]
 
 # ── Form inputs ────────────────────────────────────────────────────────
-@onready var company_dropdown : OptionButton = %CompanyDropdown
-@onready var input_name       : LineEdit     = %InputName
-@onready var input_role       : LineEdit     = %InputRole
-@onready var input_number     : LineEdit     = %InputNumber
-@onready var input_department : LineEdit     = %InputDepartment
-@onready var input_address    : LineEdit     = %InputAddress
-@onready var input_sss        : LineEdit     = %InputSSS
-@onready var input_tin        : LineEdit     = %InputTIN
-@onready var input_philhealth : LineEdit     = %InputPhilHealth
-@onready var input_pagibig    : LineEdit     = %InputPagIbig
-@onready var input_ec_person  : LineEdit     = %InputECPerson
-@onready var input_ec_number  : LineEdit     = %InputECNumber
-@onready var photo_path_label : Label        = %PhotoPathLabel
+@onready var company_dropdown	: OptionButton	= %CompanyDropdown
+@onready var input_name			: LineEdit		= %InputName
+@onready var input_nick_name	: LineEdit		= %InputNickName
+@onready var input_role			: LineEdit		= %InputRole
+@onready var input_number		: LineEdit		= %InputNumber
+@onready var input_department	: LineEdit		= %InputDepartment
+@onready var input_address		: LineEdit		= %InputAddress
+@onready var input_sss			: LineEdit		= %InputSSS
+@onready var input_tin			: LineEdit		= %InputTIN
+@onready var input_philhealth	: LineEdit		= %InputPhilHealth
+@onready var input_pagibig		: LineEdit		= %InputPagIbig
+@onready var input_ec_person	: LineEdit		= %InputECPerson
+@onready var input_ec_number	: LineEdit		= %InputECNumber
+@onready var browse_photo_btn	: Button		= %BrowsePhotoBtn
+@onready var browse_esig_btn	: Button		= %BrowseSigBtn
+@onready var browse_qr_btn	: Button		= %BrowseQrBtn
 
 # ── Preview sides ──────────────────────────────────────────────────────
-@onready var front_side       : Control     = %FrontSide
-@onready var back_side        : Control     = %BackSide
+@onready var front_side			: Control     = %FrontSide
+@onready var back_side			: Control     = %BackSide
 
 # ── Front layers ──────────────────────────────────────────────────────
-@onready var id_background    : TextureRect = %Background
-@onready var id_photo         : TextureRect = %Photo
-@onready var id_header        : TextureRect = %Header
-@onready var id_overlay       : TextureRect = %Overlay
+@onready var id_background		: TextureRect = %Background
+@onready var id_photo			: TextureRect = %Photo
+@onready var es_photo			: TextureRect = %Signature
+@onready var qr_photo			: TextureRect = %QR
+@onready var id_header			: TextureRect = %Header
+@onready var id_overlay			: TextureRect = %Overlay
 
 # ── Back layers ────────────────────────────────────────────────────────
-@onready var back_background  : TextureRect = %BackBackground
+@onready var back_background 	: TextureRect = %BackBackground
 
 # ── Front labels ──────────────────────────────────────────────────────
-@onready var lbl_name         : Label = %LblName
-@onready var lbl_role         : Label = %LblRole
-@onready var lbl_number       : Label = %LblNumber
-@onready var lbl_department   : Label = %LblDepartment
-@onready var lbl_ec           : Label = %LblEC
+@onready var lbl_name			: Label = %LblName
+@onready var lbl_nick_name		: Label = %LblNickName
+@onready var lbl_role			: Label = %LblRole
+@onready var lbl_number			: Label = %LblNumber
+@onready var lbl_department		: Label = %LblDepartment
+@onready var lbl_ec				: Label = %LblEC
 
 # ── Back labels ────────────────────────────────────────────────────────
-@onready var lbl_address      : Label = %LblAddress
-@onready var lbl_sss          : Label = %LblSSS
-@onready var lbl_tin          : Label = %LblTIN
-@onready var lbl_philhealth   : Label = %LblPhilHealth
-@onready var lbl_pagibig      : Label = %LblPagIbig
-@onready var lbl_ec_back      : Label = %LblECBack
+@onready var lbl_address		: Label = %LblAddress
+@onready var lbl_sss			: Label = %LblSSS
+@onready var lbl_tin			: Label = %LblTIN
+@onready var lbl_philhealth		: Label = %LblPhilHealth
+@onready var lbl_pagibig		: Label = %LblPagIbig
+@onready var lbl_ec_back		: Label = %LblECBack
 
 # ── Flip button ────────────────────────────────────────────────────────
-@onready var flip_btn         : Button = %FlipBtn
+@onready var flip_btn			: Button = %FlipBtn
 
 # ── ID Card container (used for export capture) ────────────────────────
-@onready var id_card          : Control = %IDCard
+@onready var id_card			: Control = %IDCard
 
 # ── State ──────────────────────────────────────────────────────────────
-var _photo_texture   : ImageTexture = null
-var _showing_back    : bool = false
-var _current_company : int  = 0
+var _photo_texture		: ImageTexture = null
+var _showing_back		: bool = false
+var _current_company	: int  = 0
 
 # ──────────────────────────────────────────────────────────────────────
 func _ready() -> void:
 	# Populate company dropdown
-	for name in COMPANIES:
-		company_dropdown.add_item(name)
+	for i in COMPANIES:
+		company_dropdown.add_item(i)
 	company_dropdown.select(0)
 	_apply_header(0)
 
 	# Connect live-update signals
 	for field: LineEdit in [
-		input_name, input_role, input_number, input_department,
+		input_name, input_nick_name, input_role, input_number, input_department,
 		input_address, input_sss, input_tin, input_philhealth,
 		input_pagibig, input_ec_person, input_ec_number
 	]:
@@ -95,6 +101,7 @@ func _on_field_changed(_new_text: String = "") -> void:
 func _update_preview() -> void:
 	# Front labels
 	lbl_name.text       = input_name.text
+	lbl_nick_name.text       = input_nick_name.text
 	lbl_role.text       = input_role.text
 	lbl_number.text     = input_number.text
 	lbl_department.text = input_department.text
@@ -104,7 +111,7 @@ func _update_preview() -> void:
 	var ec_number := input_ec_number.text
 	var ec_text   := ""
 	if not ec_person.is_empty() and not ec_number.is_empty():
-		ec_text = ec_person + "  |  " + ec_number
+		ec_text = ec_person + "\n" + ec_number
 	elif not ec_person.is_empty():
 		ec_text = ec_person
 	elif not ec_number.is_empty():
@@ -128,27 +135,46 @@ func _on_flip_toggled(pressed: bool) -> void:
 	flip_btn.text = "Flip ↪" if pressed else "Flip ↩"
 
 # ──────────────────────────────────────────────────────────────────────
-func _on_browse_photo_pressed() -> void:
+func _on_browse_photo_pressed(button_src,variant) -> void:
+	
 	var dialog := FileDialog.new()
+	
 	dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
 	dialog.access    = FileDialog.ACCESS_FILESYSTEM
 	dialog.filters   = PackedStringArray(["*.png ; PNG Images"])
-	dialog.title     = "Select Profile Photo (PNG)"
 	dialog.min_size  = Vector2i(700, 500)
+	match variant:
+		"profile":
+			dialog.title		= "Select Profile Photo (PNG)"
+			dialog.current_dir	= "D:/RJ files/ID_pictures"
+		"signature":
+			dialog.title		= "Select Signature (PNG)"
+			dialog.current_dir = "D:/RJ files/ID_pictures/2x2 Pictures/Signature"
+		"qrcode":
+			dialog.title		= "Select QR Code (PNG)"
+			dialog.current_dir = "D:/RJ files/ID_pictures/QR"
+	# dialog.current_dir = "D:/RJ files/ID_pictures"
 	add_child(dialog)
 	dialog.popup_centered()
-	dialog.file_selected.connect(_on_photo_selected.bind(dialog))
+	dialog.file_selected.connect(_on_photo_selected.bind(dialog, variant, button_src))
 	dialog.canceled.connect(dialog.queue_free)
 
-func _on_photo_selected(path: String, dialog: FileDialog) -> void:
+func _on_photo_selected(path: String, dialog: FileDialog, variant, button_src) -> void:
 	dialog.queue_free()
 	var img := Image.new()
 	if img.load(path) != OK:
 		push_error("Could not load image: " + path)
 		return
+	
 	_photo_texture        = ImageTexture.create_from_image(img)
-	id_photo.texture      = _photo_texture
-	photo_path_label.text = path.get_file()
+	match variant:
+		"profile":
+			id_photo.texture      = _photo_texture
+		"signature":
+			es_photo.texture      = _photo_texture
+		"qrcode":
+			qr_photo.texture      = _photo_texture
+	button_src.text = path.get_file()
 
 # ──────────────────────────────────────────────────────────────────────
 func _on_export_pressed() -> void:
@@ -227,15 +253,20 @@ func _get_card_screen_rect() -> Rect2i:
 
 # ──────────────────────────────────────────────────────────────────────
 func _on_clear_pressed() -> void:
+	var default_btn_label = "Browse File 📂"
 	for field: LineEdit in [
-		input_name, input_role, input_number, input_department,
+		input_name, input_nick_name , input_role, input_number, input_department,
 		input_address, input_sss, input_tin, input_philhealth,
 		input_pagibig, input_ec_person, input_ec_number
 	]:
 		field.text = ""
-	_photo_texture        = null
-	id_photo.texture      = null
-	photo_path_label.text = "No file selected"
+	_photo_texture        	= null
+	id_photo.texture      	= null
+	es_photo.texture      	= null
+	qr_photo.texture      	= null
+	browse_photo_btn.text 	= default_btn_label
+	browse_esig_btn.text 	= default_btn_label
+	browse_qr_btn.text 		= default_btn_label
 	company_dropdown.select(0)
 	_apply_header(0)
 	_update_preview()
