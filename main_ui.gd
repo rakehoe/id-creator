@@ -259,7 +259,7 @@ func _export_side(front: Control, back: Control, save_dir: String, base_name: St
 
 # ──────────────────────────────────────────────────────────────────────
 func _on_clear_pressed() -> void:
-	var default_btn_label = "Browse File 📂"
+	var default_btn_label = "Browse File..."
 	for field: LineEdit in [
 		input_name, input_nick_name , input_role, input_number, input_department,
 		input_address, input_sss, input_tin, input_philhealth,
