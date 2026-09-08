@@ -408,7 +408,6 @@ size_flags_horizontal = 3
 
 [node name="IDCard" type="PanelContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer" unique_id=184564071]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(1284, 1980)
 propagate_maximum_size = false
 layout_mode = 2
@@ -739,17 +738,31 @@ layout_mode = 2
 color = Color(1, 0.22745098, 0.32156864, 0.46666667)
 metadata/_edit_lock_ = true
 
-[node name="Profile" type="PanelContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer" unique_id=1983560330]
+[node name="ProfileContainer" type="SubViewportContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer" unique_id=424210821]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(1200, 1200)
+custom_maximum_size = Vector2(1284, 1284)
+propagate_maximum_size = false
 layout_mode = 2
-size_flags_vertical = 3
+stretch = true
 
-[node name="Profileset" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/Profile" unique_id=243881474]
-layout_mode = 2
+[node name="Profile" type="SubViewport" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/ProfileContainer" unique_id=882928716]
+unique_name_in_owner = true
+transparent_bg = true
+size = Vector2i(1284, 1200)
+size_2d_override = Vector2i(1284, 1284)
+size_2d_override_stretch = true
 
-[node name="Bg" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/Profile/Profileset" unique_id=2005098357]
+[node name="Profileset" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/ProfileContainer/Profile" unique_id=243881474]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Bg" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/ProfileContainer/Profile/Profileset" unique_id=2005098357]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -758,7 +771,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_8yam0")
 
-[node name="ProfilePic" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/Profile/Profileset" unique_id=461212596]
+[node name="ProfilePic" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/ProfileContainer/Profile/Profileset" unique_id=461212596]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -773,7 +786,7 @@ expand_mode = 4
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Overlay" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/Profile/Profileset" unique_id=1556830891]
+[node name="Overlay" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/ProfileContainer/Profile/Profileset" unique_id=1556830891]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

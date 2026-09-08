@@ -65,7 +65,8 @@ const HEADER_PATHS : Array[String] = [
 # ── ID Card container & viewport (used for export capture) ─────────────
 # CHANGED: Added references to IDContainer (SubViewportContainer) and IDviewport (SubViewport)
 # WHY: We need direct access to temporarily adjust the viewport resolution to full 1284x1980 during export
-@onready var profile_card		: PanelContainer		= %Profile
+@onready var profile_card		: SubViewport			= %Profile
+@onready var profile_container	: SubViewportContainer	= %ProfileContainer
 @onready var id_card			: PanelContainer		= %IDCard
 @onready var id_container		: SubViewportContainer	= %IDContainer
 @onready var id_viewport		: SubViewport			= %IDviewport
@@ -73,7 +74,7 @@ const HEADER_PATHS : Array[String] = [
 # CHANGED: Added native ID card resolution constant
 # WHY: Matches the original asset resolution (1284x1980) so exported PNGs are full high-res print quality
 const NATIVE_ID_SIZE	 	: Vector2i = Vector2i(1284, 1980)
-const NATIVE_PROFILE_SIZE	: Vector2i = Vector2i(1284, 1980)
+const NATIVE_PROFILE_SIZE	: Vector2i = Vector2i(1200, 1200)
 
 
 # ── State ──────────────────────────────────────────────────────────────
@@ -85,7 +86,7 @@ var _current_company	: int  = 0
 func _ready() -> void:
 	front_side.visible = not _showing_back
 	back_side.visible = _showing_back
-	for main_panel: PanelContainer in [ id_card, profile_card ]:
+	for main_panel in [ id_card, profile_container ]:
 		main_panel.visible = true
 	# Populate company dropdown
 	for i in COMPANIES:
@@ -221,50 +222,76 @@ func _do_export(chosen_path: String, dialog: FileDialog, base_name: String) -> v
 
 	# Derive the save directory from the chosen path
 	var save_dir := chosen_path.get_base_dir()
+	
+	# Personalizing folders for each export 
+	var psnl_dir := save_dir + "/" + base_name.to_upper()
+	var save_folder = DirAccess.open(save_dir)
+	if not save_folder.dir_exists(psnl_dir):
+		save_folder.make_dir(psnl_dir)
+	
 
-	_export_side(front_side, back_side, save_dir, base_name)
+	_export_side(front_side, back_side, psnl_dir, base_name)
 
 func _export_side(front: Control, back: Control, save_dir: String, base_name: String) -> void:
+	var lname := input_name.text.strip_edges().split(" ", false)[-1]
+	
 	# CHANGED: 1. Save original container stretch mode and viewport size
 	# WHY: During regular UI preview, stretch=true keeps the viewport scaled to the UI window (~400x674)
 	var orig_stretch : bool     = id_container.stretch
 	var orig_vp_size : Vector2i = id_viewport.size
+	var orig_profile_stretch : bool = profile_container.stretch
+	var orig_profile_size : Vector2i = profile_card.size
 
 	# CHANGED: 2. Temporarily switch SubViewport to full native resolution (1284x1980)
 	# WHY: Disabling container stretch allows the SubViewport to render at its true 1284x1980 asset resolution
 	id_container.stretch = false
 	id_viewport.size = NATIVE_ID_SIZE
+	profile_container.stretch = false
+	profile_card.size = NATIVE_PROFILE_SIZE
 
 	# ── Export FRONT ──────────────────────────────────────────────────
 	front.visible = true
 	back.visible  = false
+	profile_container.visible = false
 	await RenderingServer.frame_post_draw
 
 	# CHANGED: 3. Capture directly from id_viewport texture without get_region()
 	# WHY: id_viewport is now rendering at exactly 1284x1980, so get_image() is already the full card image
 	var front_img := id_viewport.get_texture().get_image()
-	front_img.save_png(save_dir.path_join(base_name + "_front.png"))
+	front_img.save_png(save_dir.path_join(lname + "_front.png")) 
 
 	# ── Export BACK ───────────────────────────────────────────────────
 	front.visible = false
 	back.visible  = true
+	profile_container.visible = false
 	await RenderingServer.frame_post_draw
 
 	# CHANGED: 4. Capture back image directly at full 1284x1980 resolution
 	var back_img := id_viewport.get_texture().get_image()
-	back_img.save_png(save_dir.path_join(base_name + "_back.png"))
+	back_img.save_png(save_dir.path_join(lname + "_back.png"))
+
+
+	# ── Export PROFILE ───────────────────────────────────────────────────
+
+
+	profile_container.visible = true
+	await RenderingServer.frame_post_draw
+	var profile_img := profile_card.get_texture().get_image()
+	profile_img.save_png(save_dir.path_join(lname + "_profile.jpg"))
 
 
 	# ── Restore preview state ─────────────────────────────────────────
 	# CHANGED: 5. Restore original UI viewport size and stretch mode
 	# WHY: Returns the on-screen preview back to normal responsive UI scaling
-	id_container.stretch = orig_stretch
-	id_viewport.size = orig_vp_size
-	front.visible = not _showing_back
-	back.visible  = _showing_back
+	profile_card.size 			= orig_profile_size
+	id_viewport.size 			= orig_vp_size
+	front.visible 				= not _showing_back
+	back.visible  				= _showing_back
+	profile_container.stretch 	= orig_profile_stretch
+	id_container.stretch 		= orig_stretch
 
-	print("Exported: ", save_dir.path_join(base_name + "_front.png"))
-	print("Exported: ", save_dir.path_join(base_name + "_back.png"))
+	print("Exported: ", save_dir.path_join(lname + "_front.png"))
+	print("Exported: ", save_dir.path_join(lname + "_back.png"))
 
 # ──────────────────────────────────────────────────────────────────────
 func _on_clear_pressed() -> void:
