@@ -49,7 +49,6 @@ const HEADER_PATHS : Array[String] = [
 @onready var lbl_role			: Label = %LblRole
 @onready var lbl_number			: Label = %LblNumber
 @onready var lbl_department		: Label = %LblDepartment
-@onready var lbl_ec				: Label = %LblEC
 
 # ── Back labels ────────────────────────────────────────────────────────
 @onready var lbl_address		: Label = %LblAddress
@@ -57,7 +56,8 @@ const HEADER_PATHS : Array[String] = [
 @onready var lbl_tin			: Label = %LblTIN
 @onready var lbl_philhealth		: Label = %LblPhilHealth
 @onready var lbl_pagibig		: Label = %LblPagIbig
-@onready var lbl_ec_back		: Label = %LblECBack
+@onready var lbl_ec_name		: Label = %LblECname
+@onready var lbl_ec_num			: Label = %LblECnum
 
 # ── Flip button ────────────────────────────────────────────────────────
 @onready var flip_btn			: Button = %FlipBtn
@@ -126,16 +126,9 @@ func _update_preview() -> void:
 	# Emergency contact (shown on both sides)
 	var ec_person := input_ec_person.text
 	var ec_number := input_ec_number.text
-	var ec_text   := ""
-	if not ec_person.is_empty() and not ec_number.is_empty():
-		ec_text = ec_person + "\n" + ec_number
-	elif not ec_person.is_empty():
-		ec_text = ec_person
-	elif not ec_number.is_empty():
-		ec_text = ec_number
 
-	lbl_ec.text      = ec_text
-	lbl_ec_back.text = ec_text
+	lbl_ec_name.text    = ec_person
+	lbl_ec_num.text 	= ec_number
 
 	# Back labels
 	lbl_address.text    = input_address.text
@@ -214,26 +207,28 @@ func _on_export_pressed() -> void:
 	dir_dialog.min_size  = Vector2i(700, 500)
 	add_child(dir_dialog)
 	dir_dialog.popup_centered()
-	dir_dialog.file_selected.connect(_do_export.bind(dir_dialog, base_name))
+	dir_dialog.file_selected.connect(_do_export.bind(dir_dialog))
 	dir_dialog.canceled.connect(dir_dialog.queue_free)
 
-func _do_export(chosen_path: String, dialog: FileDialog, base_name: String) -> void:
+func _do_export(chosen_path: String, dialog: FileDialog) -> void:
 	dialog.queue_free()
-
+	var f_letter := input_name.text.strip_edges().split(" ",false)[0][0]
+	var lname := input_name.text.strip_edges().split(" ", false)[-1].to_upper()
+	var short := f_letter + "_" + lname
 	# Derive the save directory from the chosen path
 	var save_dir := chosen_path.get_base_dir()
 	
 	# Personalizing folders for each export 
-	var psnl_dir := save_dir + "/" + base_name.to_upper()
+	var psnl_dir := save_dir + "/" + short.to_upper()
 	var save_folder = DirAccess.open(save_dir)
 	if not save_folder.dir_exists(psnl_dir):
 		save_folder.make_dir(psnl_dir)
 	
 
-	_export_side(front_side, back_side, psnl_dir, base_name)
+	_export_side(front_side, back_side, psnl_dir)
 
-func _export_side(front: Control, back: Control, save_dir: String, base_name: String) -> void:
-	var lname := input_name.text.strip_edges().split(" ", false)[-1]
+func _export_side(front: Control, back: Control, save_dir: String) -> void:
+	var lname := input_name.text.strip_edges().split(" ", false)[-1].to_upper()
 	
 	# CHANGED: 1. Save original container stretch mode and viewport size
 	# WHY: During regular UI preview, stretch=true keeps the viewport scaled to the UI window (~400x674)
