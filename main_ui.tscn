@@ -9,6 +9,8 @@
 [ext_resource type="FontFile" uid="uid://dla4pdwptqltb" path="res://assets/fonts/BREATHING.TTF" id="5_n1q3t"]
 [ext_resource type="FontFile" uid="uid://ukv8vt6unjkl" path="res://assets/fonts/poppins/POPPINS-EXTRABOLD.OTF" id="6_il2or"]
 [ext_resource type="FontFile" uid="uid://qktvr78rkm8c" path="res://assets/fonts/poppins/POPPINS-MEDIUM.OTF" id="7_1v8me"]
+[ext_resource type="Texture2D" uid="uid://bnuc8ldxrdfa4" path="res://assets/2x2 back.jpg" id="10_8yam0"]
+[ext_resource type="Texture2D" uid="uid://2eqvqwl7258c" path="res://assets/2x2 overlay.png" id="11_81ket"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1v8me"]
 content_margin_left = 23.0
@@ -390,21 +392,35 @@ size_2d_override = Vector2i(1284, 1980)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="IDCard" type="PanelContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport" unique_id=184564071]
-unique_name_in_owner = true
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport" unique_id=1497696146]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="FrontSide" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard" unique_id=333333301]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer" unique_id=543965198]
+custom_minimum_size = Vector2(1284, 776)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="IDCard" type="PanelContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer" unique_id=184564071]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(1284, 1980)
+propagate_maximum_size = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FrontSide" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard" unique_id=333333301]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="Background" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide" unique_id=1325355350]
+[node name="Background" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide" unique_id=1325355350]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -414,22 +430,22 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_bg")
 
-[node name="Photo" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide" unique_id=1063009183]
+[node name="Photo" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide" unique_id=1063009183]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.30999988
-anchor_top = 0.11795252
-anchor_right = 0.90250003
-anchor_bottom = 0.5252645
+anchor_left = 0.23000003
+anchor_top = 0.12388725
+anchor_right = 0.95500016
+anchor_bottom = 0.5408012
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_b7t0n")
-expand_mode = 1
-stretch_mode = 6
+expand_mode = 2
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Overlay" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide" unique_id=1300203986]
+[node name="Overlay" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide" unique_id=1300203986]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -440,21 +456,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_overlay")
 
-[node name="Signature" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide" unique_id=831710602]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2700002
-anchor_top = 0.7010386
-anchor_right = 0.9400002
-anchor_bottom = 0.8709617
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-stretch_mode = 6
-metadata/_edit_use_anchors_ = true
-
-[node name="Header" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide" unique_id=333333310]
+[node name="Header" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide" unique_id=333333310]
 unique_name_in_owner = true
 clip_children = 2
 oversampling_with_scale = 1
@@ -470,7 +472,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_jmc")
 
-[node name="FrontLabels" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide" unique_id=85086479]
+[node name="FrontLabels" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide" unique_id=85086479]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -480,7 +482,7 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="LblNickName" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels" unique_id=113154013]
+[node name="LblNickName" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels" unique_id=113154013]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 356.3101
@@ -495,7 +497,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels" unique_id=1425439134]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels" unique_id=1425439134]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.23000005
@@ -505,11 +507,11 @@ anchor_bottom = 0.82274824
 theme_override_constants/separation = -11
 metadata/_edit_use_anchors_ = true
 
-[node name="LblName" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=735821092]
+[node name="LblName" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=735821092]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
-theme_override_constants/line_spacing = -50
+theme_override_constants/line_spacing = -35
 theme_override_fonts/font = ExtResource("6_il2or")
 theme_override_font_sizes/font_size = 72
 text = "Rico john t. casquete"
@@ -518,12 +520,12 @@ vertical_alignment = 1
 autowrap_mode = 3
 uppercase = true
 
-[node name="HSeparator2" type="HSeparator" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=182280792]
+[node name="HSeparator2" type="HSeparator" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=182280792]
 layout_mode = 2
 theme_override_constants/separation = -41
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ncsem")
 
-[node name="LblRole" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=259193416]
+[node name="LblRole" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=259193416]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -534,18 +536,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="HSeparator" type="HSeparator" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=1263754982]
+[node name="HSeparator" type="HSeparator" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=1263754982]
 layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ncsem")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=1728189719]
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=1728189719]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 11
 alignment = 1
 
-[node name="id" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer/HBoxContainer" unique_id=1541361973]
+[node name="id" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer/HBoxContainer" unique_id=1541361973]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
 theme_override_fonts/font = ExtResource("7_1v8me")
@@ -553,7 +555,7 @@ theme_override_font_sizes/font_size = 40
 text = "id:"
 uppercase = true
 
-[node name="LblNumber" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer/HBoxContainer" unique_id=1499806163]
+[node name="LblNumber" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer/HBoxContainer" unique_id=1499806163]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
@@ -564,7 +566,15 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="LblDepartment" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels" unique_id=655230198]
+[node name="Signature" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=831710602]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+expand_mode = 4
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="LblDepartment" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels" unique_id=655230198]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -587,7 +597,7 @@ clip_text = true
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="LblEC" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels" unique_id=1449174576]
+[node name="LblEC" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels" unique_id=1449174576]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -605,11 +615,11 @@ autowrap_mode = 1
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="BackSide" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard" unique_id=333333401]
+[node name="BackSide" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard" unique_id=333333401]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BackBackground" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide" unique_id=333333402]
+[node name="BackBackground" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide" unique_id=333333402]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -619,16 +629,18 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_back")
 
-[node name="QR" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide" unique_id=1723808020]
+[node name="QR" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide" unique_id=1723808020]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_left = 0.7949999
 anchor_top = 0.025964394
 anchor_right = 0.96499985
 anchor_bottom = 0.13575667
+expand_mode = 2
+stretch_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="BackLabels" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide" unique_id=333333410]
+[node name="BackLabels" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide" unique_id=333333410]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -637,7 +649,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="LblAddress" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels" unique_id=1078948370]
+[node name="LblAddress" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels" unique_id=1078948370]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -657,7 +669,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels" unique_id=2053173414]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels" unique_id=2053173414]
 layout_mode = 0
 anchor_left = 0.59
 anchor_top = 0.26780418
@@ -667,7 +679,7 @@ offset_left = 6.1035156e-05
 theme_override_constants/separation = 10
 metadata/_edit_use_anchors_ = true
 
-[node name="LblSSS" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1003133982]
+[node name="LblSSS" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1003133982]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
@@ -675,7 +687,7 @@ theme_override_fonts/font = ExtResource("7_1v8me")
 theme_override_font_sizes/font_size = 50
 text = "rico john casquete"
 
-[node name="LblTIN" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1162009657]
+[node name="LblTIN" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1162009657]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
@@ -683,7 +695,7 @@ theme_override_fonts/font = ExtResource("7_1v8me")
 theme_override_font_sizes/font_size = 50
 text = "rico john casquete"
 
-[node name="LblPhilHealth" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1949414181]
+[node name="LblPhilHealth" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1949414181]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
@@ -691,7 +703,7 @@ theme_override_fonts/font = ExtResource("7_1v8me")
 theme_override_font_sizes/font_size = 50
 text = "rico john casquete"
 
-[node name="LblPagIbig" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1288302646]
+[node name="LblPagIbig" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1288302646]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
@@ -699,7 +711,7 @@ theme_override_fonts/font = ExtResource("7_1v8me")
 theme_override_font_sizes/font_size = 50
 text = "rico john casquete"
 
-[node name="LblECBack" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels" unique_id=333333420]
+[node name="LblECBack" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels" unique_id=333333420]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -721,11 +733,54 @@ text = "rico john casquete
 09043654"
 autowrap_mode = 1
 
-[node name="size" type="ColorRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard" unique_id=1469339710]
+[node name="size" type="ColorRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard" unique_id=1469339710]
 visible = false
 layout_mode = 2
 color = Color(1, 0.22745098, 0.32156864, 0.46666667)
 metadata/_edit_lock_ = true
+
+[node name="Profile" type="PanelContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer" unique_id=1983560330]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(1200, 1200)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Profileset" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/Profile" unique_id=243881474]
+layout_mode = 2
+
+[node name="Bg" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/Profile/Profileset" unique_id=2005098357]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_8yam0")
+
+[node name="ProfilePic" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/Profile/Profileset" unique_id=461212596]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09750005
+anchor_top = 0.14722316
+anchor_right = 0.89250034
+anchor_bottom = 0.9978733
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_b7t0n")
+expand_mode = 4
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Overlay" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/Profile/Profileset" unique_id=1556830891]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_81ket")
 
 [connection signal="item_selected" from="HSplit/LeftPanel/Scroll/Form/RowCompany/CompanyDropdown" to="." method="_on_company_selected"]
 [connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer/BrowsePhotoBtn" to="." method="_on_browse_photo_pressed" flags=18 binds= ["profile"]]

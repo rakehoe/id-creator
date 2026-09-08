@@ -34,6 +34,7 @@ const HEADER_PATHS : Array[String] = [
 # ── Front layers ──────────────────────────────────────────────────────
 @onready var id_background		: TextureRect = %Background
 @onready var id_photo			: TextureRect = %Photo
+@onready var profile_photo		: TextureRect = %ProfilePic
 @onready var es_photo			: TextureRect = %Signature
 @onready var qr_photo			: TextureRect = %QR
 @onready var id_header			: TextureRect = %Header
@@ -64,13 +65,15 @@ const HEADER_PATHS : Array[String] = [
 # ── ID Card container & viewport (used for export capture) ─────────────
 # CHANGED: Added references to IDContainer (SubViewportContainer) and IDviewport (SubViewport)
 # WHY: We need direct access to temporarily adjust the viewport resolution to full 1284x1980 during export
-@onready var id_card			: PanelContainer     = %IDCard
-@onready var id_container		: SubViewportContainer = %IDContainer
-@onready var id_viewport		: SubViewport        = %IDviewport
+@onready var profile_card		: PanelContainer		= %Profile
+@onready var id_card			: PanelContainer		= %IDCard
+@onready var id_container		: SubViewportContainer	= %IDContainer
+@onready var id_viewport		: SubViewport			= %IDviewport
 
 # CHANGED: Added native ID card resolution constant
 # WHY: Matches the original asset resolution (1284x1980) so exported PNGs are full high-res print quality
-const NATIVE_ID_SIZE : Vector2i = Vector2i(1284, 1980)
+const NATIVE_ID_SIZE	 	: Vector2i = Vector2i(1284, 1980)
+const NATIVE_PROFILE_SIZE	: Vector2i = Vector2i(1284, 1980)
 
 
 # ── State ──────────────────────────────────────────────────────────────
@@ -80,6 +83,10 @@ var _current_company	: int  = 0
 
 # ──────────────────────────────────────────────────────────────────────
 func _ready() -> void:
+	front_side.visible = not _showing_back
+	back_side.visible = _showing_back
+	for main_panel: PanelContainer in [ id_card, profile_card ]:
+		main_panel.visible = true
 	# Populate company dropdown
 	for i in COMPANIES:
 		company_dropdown.add_item(i)
@@ -110,7 +117,7 @@ func _on_field_changed(_new_text: String = "") -> void:
 func _update_preview() -> void:
 	# Front labels
 	lbl_name.text       = input_name.text
-	lbl_nick_name.text       = input_nick_name.text
+	lbl_nick_name.text  = input_nick_name.text
 	lbl_role.text       = input_role.text
 	lbl_number.text     = input_number.text
 	lbl_department.text = input_department.text
@@ -178,11 +185,12 @@ func _on_photo_selected(path: String, dialog: FileDialog, variant, button_src) -
 	_photo_texture        = ImageTexture.create_from_image(img)
 	match variant:
 		"profile":
-			id_photo.texture      = _photo_texture
+			id_photo.texture		= _photo_texture
+			profile_photo.texture	= _photo_texture
 		"signature":
-			es_photo.texture      = _photo_texture
+			es_photo.texture		= _photo_texture
 		"qrcode":
-			qr_photo.texture      = _photo_texture
+			qr_photo.texture		= _photo_texture
 	button_src.text = path.get_file()
 
 # ──────────────────────────────────────────────────────────────────────
@@ -201,7 +209,7 @@ func _on_export_pressed() -> void:
 	dir_dialog.filters   = PackedStringArray(["*.png ; PNG Images"])
 	dir_dialog.current_dir = "D:/RJ files/RFIDS"
 	dir_dialog.title     = "Export ID – choose save location"
-	dir_dialog.current_file = base_name + "_front.png"
+	dir_dialog.current_file = base_name + ".png"
 	dir_dialog.min_size  = Vector2i(700, 500)
 	add_child(dir_dialog)
 	dir_dialog.popup_centered()
@@ -246,6 +254,7 @@ func _export_side(front: Control, back: Control, save_dir: String, base_name: St
 	var back_img := id_viewport.get_texture().get_image()
 	back_img.save_png(save_dir.path_join(base_name + "_back.png"))
 
+
 	# ── Restore preview state ─────────────────────────────────────────
 	# CHANGED: 5. Restore original UI viewport size and stretch mode
 	# WHY: Returns the on-screen preview back to normal responsive UI scaling
@@ -259,20 +268,19 @@ func _export_side(front: Control, back: Control, save_dir: String, base_name: St
 
 # ──────────────────────────────────────────────────────────────────────
 func _on_clear_pressed() -> void:
-	var default_btn_label = "Browse File..."
 	for field: LineEdit in [
 		input_name, input_nick_name , input_role, input_number, input_department,
 		input_address, input_sss, input_tin, input_philhealth,
 		input_pagibig, input_ec_person, input_ec_number
 	]:
 		field.text = ""
+	for picture: TextureRect in [ id_photo, profile_photo, es_photo, qr_photo ]:
+		picture.texture = null
 	_photo_texture        	= null
-	id_photo.texture      	= null
-	es_photo.texture      	= null
-	qr_photo.texture      	= null
-	browse_photo_btn.text 	= default_btn_label
-	browse_esig_btn.text 	= default_btn_label
-	browse_qr_btn.text 		= default_btn_label
+	
+	for btn: Button in [ browse_photo_btn, browse_esig_btn, browse_qr_btn ]:
+		btn.text = "Browse File..."
+
 	company_dropdown.select(0)
 	_apply_header(0)
 	_update_preview()
