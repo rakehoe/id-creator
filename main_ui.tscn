@@ -447,17 +447,16 @@ texture = ExtResource("2_bg")
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.25540495
-anchor_top = 0.088374846
-anchor_right = 0.9594548
-anchor_bottom = 0.5449405
-offset_left = 38.00003
-offset_top = 38.0
-offset_right = -38.0
-offset_bottom = -38.0
+anchor_left = 0.25999996
+anchor_top = 0.12982196
+anchor_right = 0.9141357
+anchor_bottom = 0.545117
+offset_left = 3.0517578e-05
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_b7t0n")
+expand_mode = 3
+stretch_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="Overlay" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide" unique_id=1300203986]

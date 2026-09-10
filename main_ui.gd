@@ -139,6 +139,8 @@ func _update_preview() -> void:
 	lbl_number.text     = input_number.text
 	lbl_department.text = input_department.text
 	
+	if input_nick_name.text.length() >= 1:
+		lbl_nick_name.text[0] = lbl_nick_name.text[0].to_upper()
 	
 	# Emergency contact (shown on both sides)
 	var ec_person := input_ec_person.text
