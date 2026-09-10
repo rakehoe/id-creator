@@ -101,7 +101,7 @@ func _ready() -> void:
 		input_pagibig, input_ec_person, input_ec_number
 	]:
 		field.text_changed.connect(_on_field_changed)
-
+	input_name.item_rect_changed.connect(font_len)
 # ──────────────────────────────────────────────────────────────────────
 func _on_company_selected(index: int) -> void:
 	_current_company = index
@@ -115,14 +115,31 @@ func _apply_header(index: int) -> void:
 func _on_field_changed(_new_text: String = "") -> void:
 	_update_preview()
 
+
+const max_f_size: int = 75
+const min_f_size: int = 35
+
+func font_len() -> void:
+	var cur_font_size = max_f_size
+	lbl_name.add_theme_font_size_override("font_size",cur_font_size)
+	while lbl_name.get_theme_font("font").get_string_size(lbl_name.text, HORIZONTAL_ALIGNMENT_CENTER,-1,cur_font_size).x + 50 > lbl_name.custom_maximum_size.x - 100:
+		cur_font_size -= 1
+		if cur_font_size <= min_f_size:
+			cur_font_size = min_f_size
+			break
+		lbl_name.add_theme_font_size_override("font_size",cur_font_size)
+
+
 func _update_preview() -> void:
+	font_len()
 	# Front labels
 	lbl_name.text       = input_name.text
 	lbl_nick_name.text  = input_nick_name.text
 	lbl_role.text       = input_role.text
 	lbl_number.text     = input_number.text
 	lbl_department.text = input_department.text
-
+	
+	
 	# Emergency contact (shown on both sides)
 	var ec_person := input_ec_person.text
 	var ec_number := input_ec_number.text

@@ -518,25 +518,27 @@ metadata/_edit_use_anchors_ = true
 [node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels" unique_id=1425439134]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.23000005
-anchor_top = 0.59800076
-anchor_right = 0.99250007
-anchor_bottom = 0.82274824
+anchor_left = 0.22750007
+anchor_top = 0.597181
+anchor_right = 1.1239566
+anchor_bottom = 0.8219285
+offset_right = -172.05005
+offset_bottom = 61.0
 theme_override_constants/separation = -11
 metadata/_edit_use_anchors_ = true
 
 [node name="LblName" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=735821092]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(979, 102)
+custom_maximum_size = Vector2(950, -1)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
 theme_override_constants/line_spacing = -35
 theme_override_fonts/font = ExtResource("6_il2or")
-theme_override_font_sizes/font_size = 72
-text = "Rico john t. casquete"
+theme_override_font_sizes/font_size = 75
+text = "Rico john T. casquete"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
 uppercase = true
 
 [node name="HSeparator2" type="HSeparator" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=182280792]
@@ -561,6 +563,8 @@ theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ncsem")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=1728189719]
+custom_minimum_size = Vector2(979, 0)
+custom_maximum_size = Vector2(979, -1)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 11
@@ -783,9 +787,11 @@ stretch = true
 [node name="Profile" type="SubViewport" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/ProfileContainer" unique_id=882928716]
 unique_name_in_owner = true
 transparent_bg = true
+handle_input_locally = false
 size = Vector2i(1284, 1200)
 size_2d_override = Vector2i(1284, 1284)
 size_2d_override_stretch = true
+render_target_update_mode = 4
 
 [node name="Profileset" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/ProfileContainer/Profile" unique_id=243881474]
 layout_mode = 3
