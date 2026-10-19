@@ -16,6 +16,25 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1v8me"]
 content_margin_left = 23.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcdcf"]
+content_margin_left = 15.0
+content_margin_right = 10.0
+bg_color = Color(0.0885599, 0.08855992, 0.08855986, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81ket"]
+content_margin_left = 15.0
+bg_color = Color(0.28485027, 0.2848503, 0.28485018, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnsp1"]
+content_margin_left = 15.0
+bg_color = Color(0.16429067, 0.42042682, 0.22971427, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mcdcf"]
+content_margin_left = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilgax"]
+content_margin_left = 20.0
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ncsem"]
 
 [node name="main_UI" type="Control" unique_id=625672535]
@@ -43,344 +62,400 @@ split_offset = -447
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Scroll" type="ScrollContainer" parent="HSplit/LeftPanel" unique_id=157586647]
+[node name="Body" type="VBoxContainer" parent="HSplit/LeftPanel" unique_id=642787152]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="Form" type="VBoxContainer" parent="HSplit/LeftPanel/Scroll" unique_id=1318895406]
-custom_minimum_size = Vector2(380, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TitleLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1972370399]
+[node name="TitleLabel" type="Label" parent="HSplit/LeftPanel/Body" unique_id=1972370399]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "ID Creator"
 horizontal_alignment = 1
 
-[node name="Sep0" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=2023937453]
+[node name="Sep0" type="HSeparator" parent="HSplit/LeftPanel/Body" unique_id=2023937453]
 layout_mode = 2
 
-[node name="RowCompany" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=111111111]
+[node name="Scroll" type="ScrollContainer" parent="HSplit/LeftPanel/Body" unique_id=157586647]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Form" type="VBoxContainer" parent="HSplit/LeftPanel/Body/Scroll" unique_id=1318895406]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RowCompany" type="HBoxContainer" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=111111111]
 layout_mode = 2
 
-[node name="LabelCompany" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowCompany" unique_id=111111112]
+[node name="LabelCompany" type="Label" parent="HSplit/LeftPanel/Body/Scroll/Form/RowCompany" unique_id=111111112]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Company:"
 vertical_alignment = 1
 
-[node name="CompanyDropdown" type="OptionButton" parent="HSplit/LeftPanel/Scroll/Form/RowCompany" unique_id=111111113]
+[node name="CompanyDropdown" type="OptionButton" parent="HSplit/LeftPanel/Body/Scroll/Form/RowCompany" unique_id=111111113]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Sep0b" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=111111119]
+[node name="Sep0b" type="HSeparator" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=111111119]
 layout_mode = 2
 
-[node name="RowName" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=37314997]
+[node name="RowName" type="HBoxContainer" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=37314997]
 layout_mode = 2
 
-[node name="LabelName" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowName" unique_id=1072790023]
+[node name="LabelName" type="Label" parent="HSplit/LeftPanel/Body/Scroll/Form/RowName" unique_id=1072790023]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Complete Name:"
 vertical_alignment = 1
 
-[node name="InputName" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowName" unique_id=1637333863]
+[node name="InputName" type="LineEdit" parent="HSplit/LeftPanel/Body/Scroll/Form/RowName" unique_id=1637333863]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_mcdcf")
 placeholder_text = "Juan Dela Cruz"
 clear_button_enabled = true
 
-[node name="RowNickName" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=929206958]
+[node name="RowNickName" type="HBoxContainer" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=929206958]
 layout_mode = 2
 
-[node name="LabelName" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowNickName" unique_id=856665067]
+[node name="LabelName" type="Label" parent="HSplit/LeftPanel/Body/Scroll/Form/RowNickName" unique_id=856665067]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "NickName:"
 vertical_alignment = 1
 
-[node name="InputNickName" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowNickName" unique_id=292183968]
+[node name="InputNickName" type="LineEdit" parent="HSplit/LeftPanel/Body/Scroll/Form/RowNickName" unique_id=292183968]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_mcdcf")
 placeholder_text = "Juan"
 clear_button_enabled = true
 
-[node name="RowRole" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1715580463]
+[node name="RowRole" type="HBoxContainer" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=1715580463]
 layout_mode = 2
 
-[node name="LabelRole" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowRole" unique_id=1845307030]
+[node name="LabelRole" type="Label" parent="HSplit/LeftPanel/Body/Scroll/Form/RowRole" unique_id=1845307030]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Role / Position:"
 vertical_alignment = 1
 
-[node name="InputRole" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowRole" unique_id=2049607169]
+[node name="InputRole" type="LineEdit" parent="HSplit/LeftPanel/Body/Scroll/Form/RowRole" unique_id=2049607169]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_mcdcf")
 placeholder_text = "Software Engineer"
 clear_button_enabled = true
 
-[node name="RowNumber" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1169200209]
+[node name="RowNumber" type="HBoxContainer" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=1169200209]
 layout_mode = 2
 
-[node name="LabelNumber" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowNumber" unique_id=1706127293]
+[node name="LabelNumber" type="Label" parent="HSplit/LeftPanel/Body/Scroll/Form/RowNumber" unique_id=1706127293]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "ID Number:"
 vertical_alignment = 1
 
-[node name="InputNumber" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowNumber" unique_id=1831460699]
+[node name="InputNumber" type="LineEdit" parent="HSplit/LeftPanel/Body/Scroll/Form/RowNumber" unique_id=1831460699]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "30"
+theme_override_styles/normal = SubResource("StyleBoxFlat_mcdcf")
 placeholder_text = "300000"
 max_length = 6
 clear_button_enabled = true
 
-[node name="RowDept" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1562361942]
+[node name="RowDept" type="HBoxContainer" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=1562361942]
 layout_mode = 2
 
-[node name="LabelDept" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowDept" unique_id=1252431178]
+[node name="LabelDept" type="Label" parent="HSplit/LeftPanel/Body/Scroll/Form/RowDept" unique_id=1252431178]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Department:"
 vertical_alignment = 1
 
-[node name="InputDepartment" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowDept" unique_id=220962397]
+[node name="InputDepartment" type="LineEdit" parent="HSplit/LeftPanel/Body/Scroll/Form/RowDept" unique_id=220962397]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_mcdcf")
 placeholder_text = "Information Technology"
 clear_button_enabled = true
 
-[node name="RowAddress" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1151987834]
+[node name="RowAddress" type="HBoxContainer" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=1151987834]
 layout_mode = 2
 
-[node name="LabelAddress" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowAddress" unique_id=1593645523]
+[node name="LabelAddress" type="Label" parent="HSplit/LeftPanel/Body/Scroll/Form/RowAddress" unique_id=1593645523]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Address:"
 vertical_alignment = 1
 
-[node name="InputAddress" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowAddress" unique_id=190140243]
+[node name="InputAddress" type="LineEdit" parent="HSplit/LeftPanel/Body/Scroll/Form/RowAddress" unique_id=190140243]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_mcdcf")
 placeholder_text = "123 Main St, City"
 clear_button_enabled = true
 
-[node name="Sep2" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=2027909707]
+[node name="Sep2" type="HSeparator" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=2027909707]
 layout_mode = 2
 
-[node name="ECLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form" unique_id=708996622]
+[node name="ECLabel" type="Label" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=708996622]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Emergency Contact"
 
-[node name="RowEC" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=173293526]
+[node name="RowEC" type="HBoxContainer" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=173293526]
 layout_mode = 2
 
-[node name="LabelEC" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowEC" unique_id=1917573587]
+[node name="LabelEC" type="Label" parent="HSplit/LeftPanel/Body/Scroll/Form/RowEC" unique_id=1917573587]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Person / Number:"
 vertical_alignment = 1
 
-[node name="ECVBox" type="VBoxContainer" parent="HSplit/LeftPanel/Scroll/Form/RowEC" unique_id=1240092509]
+[node name="ECVBox" type="VBoxContainer" parent="HSplit/LeftPanel/Body/Scroll/Form/RowEC" unique_id=1240092509]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="InputECPerson" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowEC/ECVBox" unique_id=410589212]
+[node name="InputECPerson" type="LineEdit" parent="HSplit/LeftPanel/Body/Scroll/Form/RowEC/ECVBox" unique_id=410589212]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_mcdcf")
 placeholder_text = "Contact Person Name"
 clear_button_enabled = true
 
-[node name="InputECNumber" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowEC/ECVBox" unique_id=949359612]
+[node name="InputECNumber" type="LineEdit" parent="HSplit/LeftPanel/Body/Scroll/Form/RowEC/ECVBox" unique_id=949359612]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "+63 9XX XXX XXXX"
+theme_override_styles/normal = SubResource("StyleBoxFlat_mcdcf")
+placeholder_text = "09123456789"
 clear_button_enabled = true
 
-[node name="Sep1" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=567766861]
+[node name="Sep1" type="HSeparator" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=567766861]
 layout_mode = 2
 
-[node name="GovLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form" unique_id=401917003]
+[node name="GovLabel" type="Label" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=401917003]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "Government IDs"
 
-[node name="RowTIN" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=400294615]
+[node name="RowTIN" type="HBoxContainer" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=400294615]
 layout_mode = 2
 
-[node name="LabelTIN" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowTIN" unique_id=763125422]
+[node name="LabelTIN" type="Label" parent="HSplit/LeftPanel/Body/Scroll/Form/RowTIN" unique_id=763125422]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "TIN:"
 vertical_alignment = 1
 
-[node name="InputTIN" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowTIN" unique_id=2119062817]
+[node name="InputTIN" type="LineEdit" parent="HSplit/LeftPanel/Body/Scroll/Form/RowTIN" unique_id=2119062817]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_mcdcf")
 placeholder_text = "XXX-XXX-XXX"
 clear_button_enabled = true
 
-[node name="RowSSS" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1086423735]
+[node name="RowSSS" type="HBoxContainer" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=1086423735]
 layout_mode = 2
 
-[node name="LabelSSS" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowSSS" unique_id=857101965]
+[node name="LabelSSS" type="Label" parent="HSplit/LeftPanel/Body/Scroll/Form/RowSSS" unique_id=857101965]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "SSS No.:"
 vertical_alignment = 1
 
-[node name="InputSSS" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowSSS" unique_id=575731377]
+[node name="InputSSS" type="LineEdit" parent="HSplit/LeftPanel/Body/Scroll/Form/RowSSS" unique_id=575731377]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_mcdcf")
 placeholder_text = "XX-XXXXXXX-X"
 clear_button_enabled = true
 
-[node name="RowPagIbig" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=301377214]
+[node name="RowPagIbig" type="HBoxContainer" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=301377214]
 layout_mode = 2
 
-[node name="LabelPagIbig" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowPagIbig" unique_id=1118039576]
+[node name="LabelPagIbig" type="Label" parent="HSplit/LeftPanel/Body/Scroll/Form/RowPagIbig" unique_id=1118039576]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "HDMF No.:"
 vertical_alignment = 1
 
-[node name="InputPagIbig" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowPagIbig" unique_id=658200502]
+[node name="InputPagIbig" type="LineEdit" parent="HSplit/LeftPanel/Body/Scroll/Form/RowPagIbig" unique_id=658200502]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_mcdcf")
 placeholder_text = "XXXX-XXXX-XXXX"
 clear_button_enabled = true
 
-[node name="RowPhilHealth" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1850547287]
+[node name="RowPhilHealth" type="HBoxContainer" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=1850547287]
 layout_mode = 2
 
-[node name="LabelPhilHealth" type="Label" parent="HSplit/LeftPanel/Scroll/Form/RowPhilHealth" unique_id=268331101]
+[node name="LabelPhilHealth" type="Label" parent="HSplit/LeftPanel/Body/Scroll/Form/RowPhilHealth" unique_id=268331101]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1v8me")
 text = "PHIC No.:"
 vertical_alignment = 1
 
-[node name="InputPhilHealth" type="LineEdit" parent="HSplit/LeftPanel/Scroll/Form/RowPhilHealth" unique_id=642664821]
+[node name="InputPhilHealth" type="LineEdit" parent="HSplit/LeftPanel/Body/Scroll/Form/RowPhilHealth" unique_id=642664821]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_mcdcf")
 placeholder_text = "XX-XXXXXXXXX-X"
 clear_button_enabled = true
 
-[node name="Sep3" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=919867194]
+[node name="Sep4" type="HSeparator" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=1043944324]
 layout_mode = 2
 
-[node name="PhotoContainer" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1693241688]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/LeftPanel/Body/Scroll/Form" unique_id=1487347782]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="EnterpriseId" type="CheckBox" parent="HSplit/LeftPanel/Body/Scroll/Form/VBoxContainer" unique_id=1904209043]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_81ket")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dnsp1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mcdcf")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ilgax")
+text = "Export the Enterprise Front?"
+
+[node name="CorporateId" type="CheckBox" parent="HSplit/LeftPanel/Body/Scroll/Form/VBoxContainer" unique_id=1536733479]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_81ket")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dnsp1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mcdcf")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ilgax")
+button_pressed = true
+text = "Export the Corporate Front?"
+
+[node name="BusinessCard" type="CheckBox" parent="HSplit/LeftPanel/Body/Scroll/Form/VBoxContainer" unique_id=189516207]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_81ket")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dnsp1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mcdcf")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ilgax")
+button_pressed = true
+text = "Export the Business Cards?"
+
+[node name="ProfilePicture" type="CheckBox" parent="HSplit/LeftPanel/Body/Scroll/Form/VBoxContainer" unique_id=976653963]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_81ket")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dnsp1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mcdcf")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ilgax")
+button_pressed = true
+text = "Export the Profile Picture?"
+
+[node name="Sep3" type="HSeparator" parent="HSplit/LeftPanel/Body" unique_id=919867194]
+layout_mode = 2
+
+[node name="PhotoContainer" type="HBoxContainer" parent="HSplit/LeftPanel/Body" unique_id=1693241688]
 layout_mode = 2
 theme_override_constants/separation = 61
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer" unique_id=1030128397]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/LeftPanel/Body/PhotoContainer" unique_id=1030128397]
 layout_mode = 2
 
-[node name="PhotoLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer" unique_id=2103493957]
+[node name="PhotoLabel" type="Label" parent="HSplit/LeftPanel/Body/PhotoContainer/VBoxContainer" unique_id=2103493957]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Profile Photo"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="BrowsePhotoBtn" type="Button" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer" unique_id=122008673]
+[node name="BrowsePhotoBtn" type="Button" parent="HSplit/LeftPanel/Body/PhotoContainer/VBoxContainer" unique_id=122008673]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Browse File.."
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer" unique_id=31257720]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HSplit/LeftPanel/Body/PhotoContainer" unique_id=31257720]
 layout_mode = 2
 
-[node name="SignatureLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer2" unique_id=676163321]
+[node name="SignatureLabel" type="Label" parent="HSplit/LeftPanel/Body/PhotoContainer/VBoxContainer2" unique_id=676163321]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Signature Photo"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="BrowseSigBtn" type="Button" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer2" unique_id=57222738]
+[node name="BrowseSigBtn" type="Button" parent="HSplit/LeftPanel/Body/PhotoContainer/VBoxContainer2" unique_id=57222738]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Browse File.."
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer" unique_id=1097050734]
+[node name="VBoxContainer3" type="VBoxContainer" parent="HSplit/LeftPanel/Body/PhotoContainer" unique_id=1097050734]
 layout_mode = 2
 
-[node name="QrLabel" type="Label" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer3" unique_id=2090075626]
+[node name="QrLabel" type="Label" parent="HSplit/LeftPanel/Body/PhotoContainer/VBoxContainer3" unique_id=2090075626]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "QR Code"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="BrowseQrBtn" type="Button" parent="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer3" unique_id=8577086]
+[node name="BrowseQrBtn" type="Button" parent="HSplit/LeftPanel/Body/PhotoContainer/VBoxContainer3" unique_id=8577086]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Browse File.."
 
-[node name="Sep4" type="HSeparator" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1043944324]
-layout_mode = 2
-
-[node name="ActionRow" type="HBoxContainer" parent="HSplit/LeftPanel/Scroll/Form" unique_id=1023021410]
+[node name="ActionRow" type="HBoxContainer" parent="HSplit/LeftPanel/Body" unique_id=1023021410]
 layout_mode = 2
 alignment = 1
 
-[node name="FlipBtn" type="Button" parent="HSplit/LeftPanel/Scroll/Form/ActionRow" unique_id=222222221]
+[node name="FlipBtn" type="Button" parent="HSplit/LeftPanel/Body/ActionRow" unique_id=222222221]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 36)
 layout_mode = 2
 toggle_mode = true
 text = "Flip ↩"
 
-[node name="ExportBtn" type="Button" parent="HSplit/LeftPanel/Scroll/Form/ActionRow" unique_id=222222222]
+[node name="ExportBtn" type="Button" parent="HSplit/LeftPanel/Body/ActionRow" unique_id=222222222]
 custom_minimum_size = Vector2(120, 36)
 layout_mode = 2
 text = "Export PNG"
 
-[node name="ClearBtn" type="Button" parent="HSplit/LeftPanel/Scroll/Form/ActionRow" unique_id=2085801051]
+[node name="ClearBtn" type="Button" parent="HSplit/LeftPanel/Body/ActionRow" unique_id=2085801051]
 custom_minimum_size = Vector2(100, 36)
 layout_mode = 2
 text = "Clear All"
 
-[node name="RightPanel" type="PanelContainer" parent="HSplit" unique_id=1577618258]
+[node name="RightPanel" type="ScrollContainer" parent="HSplit" unique_id=1483262083]
 custom_maximum_size = Vector2(400, -1)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel" unique_id=219869956]
-custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 alignment = 1
 
@@ -394,7 +469,8 @@ vertical_alignment = 2
 
 [node name="IDContainer" type="SubViewportContainer" parent="HSplit/RightPanel/VBoxContainer" unique_id=1220686428]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 673.205)
+custom_minimum_size = Vector2(400, 673.205)
+custom_maximum_size = Vector2(400, 673)
 layout_mode = 2
 size_flags_vertical = 3
 stretch = true
@@ -402,12 +478,15 @@ stretch = true
 [node name="IDviewport" type="SubViewport" parent="HSplit/RightPanel/VBoxContainer/IDContainer" unique_id=1995323642]
 unique_name_in_owner = true
 handle_input_locally = false
-size = Vector2i(400, 674)
+size = Vector2i(400, 673)
 size_2d_override = Vector2i(1284, 1980)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport" unique_id=1497696146]
+[node name="IDCard" type="PanelContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport" unique_id=184564071]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1284, 1980)
+propagate_maximum_size = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -415,25 +494,13 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer" unique_id=543965198]
-custom_minimum_size = Vector2(1284, 776)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="IDCard" type="PanelContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer" unique_id=184564071]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(1284, 1980)
-propagate_maximum_size = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="FrontSide" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard" unique_id=333333301]
+[node name="FrontSide" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard" unique_id=333333301]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Background" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide" unique_id=1325355350]
+[node name="Background" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide" unique_id=1325355350]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -443,7 +510,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_bg")
 
-[node name="Photo" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide" unique_id=1063009183]
+[node name="Photo" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide" unique_id=1063009183]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -459,7 +526,7 @@ expand_mode = 3
 stretch_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Overlay" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide" unique_id=1300203986]
+[node name="Overlay" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide" unique_id=1300203986]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -470,7 +537,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_overlay")
 
-[node name="Header" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide" unique_id=333333310]
+[node name="Header" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide" unique_id=333333310]
 unique_name_in_owner = true
 clip_children = 2
 oversampling_with_scale = 1
@@ -486,7 +553,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_jmc")
 
-[node name="FrontLabels" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide" unique_id=85086479]
+[node name="FrontLabels" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide" unique_id=85086479]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -496,7 +563,7 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="LblNickName" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels" unique_id=113154013]
+[node name="LblNickName" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels" unique_id=113154013]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(963, 340)
 custom_maximum_size = Vector2(963, 340)
@@ -514,7 +581,7 @@ vertical_alignment = 1
 autowrap_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels" unique_id=1425439134]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels" unique_id=1425439134]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.22750007
@@ -526,7 +593,7 @@ offset_bottom = 61.0
 theme_override_constants/separation = -11
 metadata/_edit_use_anchors_ = true
 
-[node name="LblName" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=735821092]
+[node name="LblName" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=735821092]
 unique_name_in_owner = true
 custom_maximum_size = Vector2(950, -1)
 layout_mode = 2
@@ -540,12 +607,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="HSeparator2" type="HSeparator" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=182280792]
+[node name="HSeparator2" type="HSeparator" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=182280792]
 layout_mode = 2
 theme_override_constants/separation = -41
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ncsem")
 
-[node name="LblRole" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=259193416]
+[node name="LblRole" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=259193416]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -556,12 +623,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="HSeparator" type="HSeparator" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=1263754982]
+[node name="HSeparator" type="HSeparator" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=1263754982]
 layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ncsem")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=1728189719]
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=1728189719]
 custom_minimum_size = Vector2(979, 0)
 custom_maximum_size = Vector2(979, -1)
 layout_mode = 2
@@ -569,7 +636,7 @@ size_flags_vertical = 4
 theme_override_constants/separation = 11
 alignment = 1
 
-[node name="id" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer/HBoxContainer" unique_id=1541361973]
+[node name="id" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer/HBoxContainer" unique_id=1541361973]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
 theme_override_fonts/font = ExtResource("7_1v8me")
@@ -577,7 +644,7 @@ theme_override_font_sizes/font_size = 40
 text = "id:"
 uppercase = true
 
-[node name="LblNumber" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer/HBoxContainer" unique_id=1499806163]
+[node name="LblNumber" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer/HBoxContainer" unique_id=1499806163]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.015686275, 0.003921569, 0.31764707, 1)
@@ -588,7 +655,7 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Signature" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=831710602]
+[node name="Signature" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels/VBoxContainer" unique_id=831710602]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 450)
 custom_maximum_size = Vector2(979, 322.143)
@@ -598,7 +665,7 @@ expand_mode = 5
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="LblDepartment" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/FrontSide/FrontLabels" unique_id=655230198]
+[node name="LblDepartment" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/FrontSide/FrontLabels" unique_id=655230198]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -621,12 +688,12 @@ clip_text = true
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="BackSide" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard" unique_id=333333401]
+[node name="BackSide" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard" unique_id=333333401]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="BackBackground" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide" unique_id=333333402]
+[node name="BackBackground" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide" unique_id=333333402]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -636,7 +703,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_back")
 
-[node name="QR" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide" unique_id=1723808020]
+[node name="QR" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide" unique_id=1723808020]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(230, 230)
 custom_maximum_size = Vector2(230, 230)
@@ -651,7 +718,7 @@ expand_mode = 3
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="BackLabels" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide" unique_id=333333410]
+[node name="BackLabels" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide" unique_id=333333410]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -660,7 +727,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="LblAddress" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels" unique_id=1078948370]
+[node name="LblAddress" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels" unique_id=1078948370]
 unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(808, 130)
@@ -685,7 +752,7 @@ autowrap_mode = 3
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels" unique_id=2053173414]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels" unique_id=2053173414]
 layout_mode = 0
 anchor_left = 0.59
 anchor_top = 0.26780418
@@ -696,7 +763,7 @@ theme_override_constants/separation = 28
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="LblSSS" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1003133982]
+[node name="LblSSS" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1003133982]
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
@@ -705,7 +772,7 @@ theme_override_fonts/font = ExtResource("10_81ket")
 theme_override_font_sizes/font_size = 40
 text = "rico john casquete"
 
-[node name="LblTIN" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1162009657]
+[node name="LblTIN" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1162009657]
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
@@ -714,7 +781,7 @@ theme_override_fonts/font = ExtResource("10_81ket")
 theme_override_font_sizes/font_size = 40
 text = "rico john casquete"
 
-[node name="LblPhilHealth" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1949414181]
+[node name="LblPhilHealth" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1949414181]
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
@@ -723,7 +790,7 @@ theme_override_fonts/font = ExtResource("10_81ket")
 theme_override_font_sizes/font_size = 40
 text = "rico john casquete"
 
-[node name="LblPagIbig" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1288302646]
+[node name="LblPagIbig" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels/VBoxContainer" unique_id=1288302646]
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
@@ -732,7 +799,7 @@ theme_override_fonts/font = ExtResource("10_81ket")
 theme_override_font_sizes/font_size = 40
 text = "rico john casquete"
 
-[node name="LblECname" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels" unique_id=333333420]
+[node name="LblECname" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels" unique_id=333333420]
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 1
@@ -751,7 +818,7 @@ text = "rico john casquete"
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="LblECnum" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard/BackSide/BackLabels" unique_id=891148724]
+[node name="LblECnum" type="Label" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard/BackSide/BackLabels" unique_id=891148724]
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 1
@@ -769,30 +836,38 @@ theme_override_font_sizes/font_size = 40
 text = "09043654"
 metadata/_edit_use_anchors_ = true
 
-[node name="size" type="ColorRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/IDCard" unique_id=1469339710]
+[node name="size" type="ColorRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/IDCard" unique_id=1469339710]
 visible = false
 layout_mode = 2
 color = Color(1, 0.22745098, 0.32156864, 0.46666667)
 metadata/_edit_lock_ = true
 
-[node name="ProfileContainer" type="SubViewportContainer" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer" unique_id=424210821]
+[node name="PreviewTitle2" type="Label" parent="HSplit/RightPanel/VBoxContainer" unique_id=1572427436]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 16
+text = "ID Picture"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ProfileContainer" type="SubViewportContainer" parent="HSplit/RightPanel/VBoxContainer" unique_id=424210821]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(1200, 1200)
+custom_minimum_size = Vector2(400, 400)
 custom_maximum_size = Vector2(1284, 1284)
 propagate_maximum_size = false
 layout_mode = 2
 stretch = true
 
-[node name="Profile" type="SubViewport" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/ProfileContainer" unique_id=882928716]
+[node name="Profile" type="SubViewport" parent="HSplit/RightPanel/VBoxContainer/ProfileContainer" unique_id=882928716]
 unique_name_in_owner = true
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1284, 1200)
+size = Vector2i(400, 400)
 size_2d_override = Vector2i(1284, 1284)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="Profileset" type="Control" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/ProfileContainer/Profile" unique_id=243881474]
+[node name="Profileset" type="Control" parent="HSplit/RightPanel/VBoxContainer/ProfileContainer/Profile" unique_id=243881474]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -801,7 +876,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="Bg" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/ProfileContainer/Profile/Profileset" unique_id=2005098357]
+[node name="Bg" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/ProfileContainer/Profile/Profileset" unique_id=2005098357]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -810,7 +885,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_8yam0")
 
-[node name="ProfilePic" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/ProfileContainer/Profile/Profileset" unique_id=461212596]
+[node name="ProfilePic" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/ProfileContainer/Profile/Profileset" unique_id=461212596]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -828,7 +903,7 @@ expand_mode = 3
 stretch_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Overlay" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/IDContainer/IDviewport/ScrollContainer/VBoxContainer/ProfileContainer/Profile/Profileset" unique_id=1556830891]
+[node name="Overlay" type="TextureRect" parent="HSplit/RightPanel/VBoxContainer/ProfileContainer/Profile/Profileset" unique_id=1556830891]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -837,10 +912,18 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_81ket")
 
-[connection signal="item_selected" from="HSplit/LeftPanel/Scroll/Form/RowCompany/CompanyDropdown" to="." method="_on_company_selected"]
-[connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer/BrowsePhotoBtn" to="." method="_on_browse_photo_pressed" flags=18 binds= ["profile"]]
-[connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer2/BrowseSigBtn" to="." method="_on_browse_photo_pressed" flags=18 binds= ["signature"]]
-[connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/PhotoContainer/VBoxContainer3/BrowseQrBtn" to="." method="_on_browse_photo_pressed" flags=18 binds= ["qrcode"]]
-[connection signal="toggled" from="HSplit/LeftPanel/Scroll/Form/ActionRow/FlipBtn" to="." method="_on_flip_toggled"]
-[connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/ActionRow/ExportBtn" to="." method="_on_export_pressed"]
-[connection signal="pressed" from="HSplit/LeftPanel/Scroll/Form/ActionRow/ClearBtn" to="." method="_on_clear_pressed"]
+[node name="PreviewTitle3" type="Label" parent="HSplit/RightPanel/VBoxContainer" unique_id=1853048314]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 16
+text = "Business cards"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="item_selected" from="HSplit/LeftPanel/Body/Scroll/Form/RowCompany/CompanyDropdown" to="." method="_on_company_selected"]
+[connection signal="pressed" from="HSplit/LeftPanel/Body/PhotoContainer/VBoxContainer/BrowsePhotoBtn" to="." method="_on_browse_photo_pressed" flags=18 binds= ["profile"]]
+[connection signal="pressed" from="HSplit/LeftPanel/Body/PhotoContainer/VBoxContainer2/BrowseSigBtn" to="." method="_on_browse_photo_pressed" flags=18 binds= ["signature"]]
+[connection signal="pressed" from="HSplit/LeftPanel/Body/PhotoContainer/VBoxContainer3/BrowseQrBtn" to="." method="_on_browse_photo_pressed" flags=18 binds= ["qrcode"]]
+[connection signal="toggled" from="HSplit/LeftPanel/Body/ActionRow/FlipBtn" to="." method="_on_flip_toggled"]
+[connection signal="pressed" from="HSplit/LeftPanel/Body/ActionRow/ExportBtn" to="." method="_on_export_pressed"]
+[connection signal="pressed" from="HSplit/LeftPanel/Body/ActionRow/ClearBtn" to="." method="_on_clear_pressed"]

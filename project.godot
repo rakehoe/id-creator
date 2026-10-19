@@ -21,6 +21,10 @@ window/size/viewport_height=700
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor]
+
+version_control/autoload_on_startup=true
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

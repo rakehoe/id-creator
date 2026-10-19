@@ -1,12 +1,13 @@
 extends Control
 
 # ── Company / header data ──────────────────────────────────────────────
-const COMPANIES : Array[String] = ["Corporation", "Pharmacy", "Aqueheart", "Enterprise"]
+const COMPANIES : Array[String] = ["Corporation", "Pharmacy", "Aqueheart", "Enterprise", "Wound Care"]
 const HEADER_PATHS : Array[String] = [
 	"res://assets/headers/jmc-header.png",
 	"res://assets/headers/jpi-header.png",
 	"res://assets/headers/aque-header.png",
 	"res://assets/headers/enter-header.png",
+	"res://assets/headers/woundcare.png",
 ]
 
 # ── Form inputs ────────────────────────────────────────────────────────
@@ -25,7 +26,7 @@ const HEADER_PATHS : Array[String] = [
 @onready var input_ec_number	: LineEdit		= %InputECNumber
 @onready var browse_photo_btn	: Button		= %BrowsePhotoBtn
 @onready var browse_esig_btn	: Button		= %BrowseSigBtn
-@onready var browse_qr_btn	: Button		= %BrowseQrBtn
+@onready var browse_qr_btn		: Button		= %BrowseQrBtn
 
 # ── Preview sides ──────────────────────────────────────────────────────
 @onready var front_side			: Control     = %FrontSide
@@ -325,3 +326,7 @@ func _on_clear_pressed() -> void:
 	company_dropdown.select(0)
 	_apply_header(0)
 	_update_preview()
+
+
+
+# Connect the checkbox to their functions
