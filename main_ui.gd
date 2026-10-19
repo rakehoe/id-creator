@@ -80,7 +80,17 @@ const NATIVE_PROFILE_SIZE	: Vector2i = Vector2i(1200, 1200)
 
 # ── State ──────────────────────────────────────────────────────────────
 var _photo_texture		: ImageTexture = null
-var _showing_back		: bool = false
+var _selected_photo_paths := {
+	"profile": "",
+	"signature": "",
+	"qrcode": "",
+}
+var _copied_photo_paths := {
+	"profile": "",
+	"signature": "",
+	"qrcode": "",
+}
+var _showing_back		: bool  = false
 var _current_company	: int  = 0
 
 # ──────────────────────────────────────────────────────────────────────
@@ -205,7 +215,185 @@ func _on_photo_selected(path: String, dialog: FileDialog, variant, button_src) -
 			es_photo.texture		= _photo_texture
 		"qrcode":
 			qr_photo.texture		= _photo_texture
+	_selected_photo_paths[variant] = path
+	_copied_photo_paths[variant] = ""
 	button_src.text = path.get_file()
+
+# ──────────────────────────────────────────────────────────────────────
+func _on_save_data_pressed() -> void:
+	var base_name := input_name.text.strip_edges().validate_filename()
+	if base_name.is_empty():
+		base_name = "id"
+
+	var dialog := FileDialog.new()
+	dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
+	dialog.access = FileDialog.ACCESS_RESOURCES
+	dialog.filters = PackedStringArray(["*.yaml ; YAML files"])
+	dialog.current_dir = "res://"
+	dialog.current_file = base_name + ".yaml"
+	dialog.title = "Save ID data to project root"
+	dialog.min_size = Vector2i(700, 500)
+	add_child(dialog)
+	dialog.popup_centered()
+	dialog.file_selected.connect(_on_yaml_save_selected.bind(dialog))
+	dialog.canceled.connect(dialog.queue_free)
+
+func _on_yaml_save_selected(path: String, dialog: FileDialog) -> void:
+	dialog.queue_free()
+	if path.get_base_dir() != "res://":
+		push_error("ID data must be saved directly in the project root (res://).")
+		return
+
+	var fields := {
+		"name": input_name.text,
+		"nickname": input_nick_name.text,
+		"role": input_role.text,
+		"number": input_number.text,
+		"department": input_department.text,
+		"address": input_address.text,
+		"sss": input_sss.text,
+		"tin": input_tin.text,
+		"philhealth": input_philhealth.text,
+		"pagibig": input_pagibig.text,
+		"emergency_contact_person": input_ec_person.text,
+		"emergency_contact_number": input_ec_number.text,
+	}
+	var yaml := "version: 1\ncompany_index: %d\n" % company_dropdown.selected
+	for key: String in fields:
+		yaml += "%s: %s\n" % [key, JSON.stringify(fields[key])]
+	for variant: String in _selected_photo_paths:
+		yaml += "photo_%s: %s\n" % [variant, JSON.stringify(_selected_photo_paths[variant])]
+		yaml += "copied_%s: %s\n" % [variant, JSON.stringify(_copied_photo_paths[variant])]
+
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	if file == null:
+		push_error("Could not open YAML file for writing: " + path)
+		return
+	file.store_string(yaml)
+	var write_error := file.get_error()
+	file.close()
+	if write_error != OK:
+		push_error("Could not write YAML file: " + path)
+
+func _on_load_data_pressed() -> void:
+	var dialog := FileDialog.new()
+	dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	dialog.access = FileDialog.ACCESS_RESOURCES
+	dialog.filters = PackedStringArray(["*.yaml ; YAML files"])
+	dialog.current_dir = "res://"
+	dialog.title = "Load ID data from project root"
+	dialog.min_size = Vector2i(700, 500)
+	add_child(dialog)
+	dialog.popup_centered()
+	dialog.file_selected.connect(_on_yaml_load_selected.bind(dialog))
+	dialog.canceled.connect(dialog.queue_free)
+
+func _on_yaml_load_selected(path: String, dialog: FileDialog) -> void:
+	dialog.queue_free()
+	if path.get_base_dir() != "res://":
+		push_error("ID data must be loaded directly from the project root (res://).")
+		return
+
+	var file := FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		push_error("Could not open YAML file: " + path)
+		return
+	var yaml := file.get_as_text()
+	file.close()
+	var values := {}
+	for line: String in yaml.split("\n", false):
+		var separator := line.find(":")
+		if separator < 1:
+			continue
+		var key := line.substr(0, separator).strip_edges()
+		var value := line.substr(separator + 1).strip_edges()
+		if key == "version" or key == "company_index":
+			if not value.is_valid_int():
+				push_error("Invalid '%s' value in %s" % [key, path])
+				return
+			values[key] = value.to_int()
+		else:
+			if value.begins_with("\""):
+				var parsed: Variant = JSON.parse_string(value)
+				if typeof(parsed) != TYPE_STRING:
+					push_error("Invalid YAML string value for '%s' in %s" % [key, path])
+					return
+				values[key] = parsed
+			elif value.begins_with("'"):
+				if not value.ends_with("'"):
+					push_error("Invalid YAML quoted value for '%s' in %s" % [key, path])
+					return
+				values[key] = value.substr(1, value.length() - 2).replace("''", "'")
+			else:
+				values[key] = value
+
+	if values.get("version", -1) != 1:
+		push_error("Unsupported or missing ID data version in " + path)
+		return
+	var company_index: int = values.get("company_index", -1)
+	if company_index < 0 or company_index >= COMPANIES.size():
+		push_error("Invalid company selection in " + path)
+		return
+
+	var field_controls := {
+		"name": input_name,
+		"nickname": input_nick_name,
+		"role": input_role,
+		"number": input_number,
+		"department": input_department,
+		"address": input_address,
+		"sss": input_sss,
+		"tin": input_tin,
+		"philhealth": input_philhealth,
+		"pagibig": input_pagibig,
+		"emergency_contact_person": input_ec_person,
+		"emergency_contact_number": input_ec_number,
+	}
+	for key: String in field_controls:
+		if not values.has(key) or typeof(values[key]) != TYPE_STRING:
+			push_error("Missing or invalid '%s' field in %s" % [key, path])
+			return
+
+	var photo_images := {}
+	var photo_paths := {}
+	var copied_paths := {}
+	for variant: String in _selected_photo_paths:
+		var selected_value: Variant = values.get("photo_%s" % variant, "")
+		var copied_value: Variant = values.get("copied_%s" % variant, "")
+		if typeof(selected_value) != TYPE_STRING or typeof(copied_value) != TYPE_STRING:
+			push_error("Invalid saved %s photo path in %s" % [variant, path])
+			return
+		var selected_path: String = selected_value
+		var copied_path: String = copied_value
+		var image_path := copied_path if not copied_path.is_empty() and FileAccess.file_exists(copied_path) else selected_path
+		if not image_path.is_empty():
+			var image := Image.new()
+			if image.load(image_path) != OK:
+				push_error("Could not load saved %s image: %s" % [variant, image_path])
+				return
+			photo_images[variant] = ImageTexture.create_from_image(image)
+		else:
+			photo_images[variant] = null
+		photo_paths[variant] = image_path
+		copied_paths[variant] = copied_path
+
+	for key: String in field_controls:
+		var field: LineEdit = field_controls[key]
+		field.text = values[key]
+	company_dropdown.select(company_index)
+	_current_company = company_index
+	_apply_header(company_index)
+	for variant: String in _selected_photo_paths:
+		_selected_photo_paths[variant] = photo_paths[variant]
+		_copied_photo_paths[variant] = copied_paths[variant]
+	id_photo.texture = photo_images["profile"]
+	profile_photo.texture = photo_images["profile"]
+	es_photo.texture = photo_images["signature"]
+	qr_photo.texture = photo_images["qrcode"]
+	browse_photo_btn.text = photo_paths["profile"].get_file() if not photo_paths["profile"].is_empty() else "Browse File..."
+	browse_esig_btn.text = photo_paths["signature"].get_file() if not photo_paths["signature"].is_empty() else "Browse File..."
+	browse_qr_btn.text = photo_paths["qrcode"].get_file() if not photo_paths["qrcode"].is_empty() else "Browse File..."
+	_update_preview()
 
 # ──────────────────────────────────────────────────────────────────────
 func _on_export_pressed() -> void:
@@ -239,13 +427,56 @@ func _do_export(chosen_path: String, dialog: FileDialog) -> void:
 	var save_dir := chosen_path.get_base_dir()
 	
 	# Personalizing folders for each export 
-	var psnl_dir := save_dir + "/" + short.to_upper()
-	var save_folder = DirAccess.open(save_dir)
-	if not save_folder.dir_exists(psnl_dir):
-		save_folder.make_dir(psnl_dir)
-	
+	var psnl_dir := save_dir.path_join(short.to_upper())
+	var save_folder := DirAccess.open(save_dir)
+	if save_folder == null:
+		push_error("Could not open export directory: " + save_dir)
+		return
+	if not save_folder.dir_exists(short.to_upper()):
+		var make_dir_error := save_folder.make_dir(short.to_upper())
+		if make_dir_error != OK:
+			push_error("Could not create export directory: " + psnl_dir)
+			return
+	if not _copy_selected_photos(psnl_dir):
+		return
 
 	_export_side(front_side, back_side, psnl_dir)
+
+func _copy_selected_photos(destination_dir: String) -> bool:
+	var export_names := {
+		"profile": "profile.png",
+		"signature": "signature.png",
+		"qrcode": "qr.png",
+	}
+	for variant: String in export_names:
+		var source_path: String = _selected_photo_paths[variant]
+		if source_path.is_empty():
+			continue
+
+		var destination_path: String = destination_dir.path_join(export_names[variant])
+		if source_path.simplify_path() == destination_path.simplify_path():
+			_copied_photo_paths[variant] = destination_path
+			continue
+
+		var source := FileAccess.open(source_path, FileAccess.READ)
+		if source == null:
+			push_error("Could not read selected %s image: %s" % [variant, source_path])
+			return false
+		var image_data := source.get_buffer(source.get_length())
+		source.close()
+
+		var destination := FileAccess.open(destination_path, FileAccess.WRITE)
+		if destination == null:
+			push_error("Could not save selected %s image: %s" % [variant, destination_path])
+			return false
+		destination.store_buffer(image_data)
+		var write_error := destination.get_error()
+		destination.close()
+		if write_error != OK:
+			push_error("Could not save selected %s image: %s" % [variant, destination_path])
+			return false
+		_copied_photo_paths[variant] = destination_path
+	return true
 
 func _export_side(front: Control, back: Control, save_dir: String) -> void:
 	var lname := input_name.text.strip_edges().split(" ", false)[-1].to_upper()
@@ -319,6 +550,9 @@ func _on_clear_pressed() -> void:
 	for picture: TextureRect in [ id_photo, profile_photo, es_photo, qr_photo ]:
 		picture.texture = null
 	_photo_texture        	= null
+	for variant: String in _selected_photo_paths:
+		_selected_photo_paths[variant] = ""
+		_copied_photo_paths[variant] = ""
 	
 	for btn: Button in [ browse_photo_btn, browse_esig_btn, browse_qr_btn ]:
 		btn.text = "Browse File..."

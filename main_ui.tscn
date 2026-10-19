@@ -379,6 +379,7 @@ text = "Export the Profile Picture?"
 
 [node name="Sep3" type="HSeparator" parent="HSplit/LeftPanel/Body" unique_id=919867194]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="PhotoContainer" type="HBoxContainer" parent="HSplit/LeftPanel/Body" unique_id=1693241688]
 layout_mode = 2
@@ -450,6 +451,23 @@ text = "Export PNG"
 custom_minimum_size = Vector2(100, 36)
 layout_mode = 2
 text = "Clear All"
+
+[node name="SaveLoadRow" type="HBoxContainer" parent="HSplit/LeftPanel/Body" unique_id=2085801052]
+layout_mode = 2
+alignment = 1
+
+[node name="SaveDataBtn" type="Button" parent="HSplit/LeftPanel/Body/SaveLoadRow" unique_id=2085801053]
+custom_minimum_size = Vector2(140, 36)
+layout_mode = 2
+text = "Save YAML"
+
+[node name="LoadDataBtn" type="Button" parent="HSplit/LeftPanel/Body/SaveLoadRow" unique_id=2085801054]
+custom_minimum_size = Vector2(140, 36)
+layout_mode = 2
+text = "Load YAML"
+
+[node name="Sep4" type="HSeparator" parent="HSplit/LeftPanel/Body" unique_id=1531489678]
+layout_mode = 2
 
 [node name="RightPanel" type="ScrollContainer" parent="HSplit" unique_id=1483262083]
 custom_maximum_size = Vector2(400, -1)
@@ -927,3 +945,5 @@ vertical_alignment = 2
 [connection signal="toggled" from="HSplit/LeftPanel/Body/ActionRow/FlipBtn" to="." method="_on_flip_toggled"]
 [connection signal="pressed" from="HSplit/LeftPanel/Body/ActionRow/ExportBtn" to="." method="_on_export_pressed"]
 [connection signal="pressed" from="HSplit/LeftPanel/Body/ActionRow/ClearBtn" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="HSplit/LeftPanel/Body/SaveLoadRow/SaveDataBtn" to="." method="_on_save_data_pressed"]
+[connection signal="pressed" from="HSplit/LeftPanel/Body/SaveLoadRow/LoadDataBtn" to="." method="_on_load_data_pressed"]
