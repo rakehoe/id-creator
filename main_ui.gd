@@ -186,7 +186,7 @@ func _on_browse_photo_pressed(button_src,variant) -> void:
 	match variant:
 		"profile":
 			dialog.title		= "Select Profile Photo (PNG)"
-			dialog.current_dir	= "D:/RJ files/ID_pictures"
+			dialog.current_dir	= "D:/RJ files/ID_pictures/2x2 Pictures"
 		"signature":
 			dialog.title		= "Select Signature (PNG)"
 			dialog.current_dir = "D:/RJ files/ID_pictures/2x2 Pictures/Signature"
@@ -229,7 +229,7 @@ func _on_save_data_pressed() -> void:
 	dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	dialog.access = FileDialog.ACCESS_RESOURCES
 	dialog.filters = PackedStringArray(["*.yaml ; YAML files"])
-	dialog.current_dir = "res://"
+	dialog.current_dir = "res://saved_data"
 	dialog.current_file = base_name + ".yaml"
 	dialog.title = "Save ID data to project root"
 	dialog.min_size = Vector2i(700, 500)
@@ -240,8 +240,8 @@ func _on_save_data_pressed() -> void:
 
 func _on_yaml_save_selected(path: String, dialog: FileDialog) -> void:
 	dialog.queue_free()
-	if path.get_base_dir() != "res://":
-		push_error("ID data must be saved directly in the project root (res://).")
+	if path.get_base_dir() != "res://saved_data":
+		push_error("ID data must be saved directly in the project root (res://saved_data).")
 		return
 
 	var fields := {
@@ -280,7 +280,7 @@ func _on_load_data_pressed() -> void:
 	dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
 	dialog.access = FileDialog.ACCESS_RESOURCES
 	dialog.filters = PackedStringArray(["*.yaml ; YAML files"])
-	dialog.current_dir = "res://"
+	dialog.current_dir = "res://saved_data"
 	dialog.title = "Load ID data from project root"
 	dialog.min_size = Vector2i(700, 500)
 	add_child(dialog)
@@ -290,8 +290,8 @@ func _on_load_data_pressed() -> void:
 
 func _on_yaml_load_selected(path: String, dialog: FileDialog) -> void:
 	dialog.queue_free()
-	if path.get_base_dir() != "res://":
-		push_error("ID data must be loaded directly from the project root (res://).")
+	if path.get_base_dir() != "res://saved_data":
+		push_error("ID data must be loaded directly from the project root (res://saved_data).")
 		return
 
 	var file := FileAccess.open(path, FileAccess.READ)
