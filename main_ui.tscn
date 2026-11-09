@@ -45,7 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
-metadata/_edit_horizontal_guides_ = [396.0, 139.0, 201.0]
+metadata/_edit_horizontal_guides_ = [396.0, 139.0, 201.0, -167.0]
 metadata/_edit_vertical_guides_ = [973.0]
 
 [node name="HSplit" type="HSplitContainer" parent="." unique_id=802214261]
