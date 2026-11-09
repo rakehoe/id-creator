@@ -258,6 +258,7 @@ func _on_yaml_save_selected(path: String, dialog: FileDialog) -> void:
 		"emergency_contact_person": input_ec_person.text,
 		"emergency_contact_number": input_ec_number.text,
 	}
+	
 	var yaml := "version: 1\ncompany_index: %d\n" % company_dropdown.selected
 	for key: String in fields:
 		yaml += "%s: %s\n" % [key, JSON.stringify(fields[key])]
@@ -272,6 +273,22 @@ func _on_yaml_save_selected(path: String, dialog: FileDialog) -> void:
 	file.store_string(yaml)
 	var write_error := file.get_error()
 	file.close()
+
+	Sql.add_data(
+		input_name.text,
+		int(input_number.text),
+		input_nick_name.text,
+		input_role.text,
+		input_department.text,
+		input_address.text,
+		input_sss.text,
+		input_tin.text,
+		input_philhealth.text,
+		input_pagibig.text,
+		input_ec_person.text,
+		int(input_ec_number.text),
+		)
+
 	if write_error != OK:
 		push_error("Could not write YAML file: " + path)
 
